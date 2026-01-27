@@ -24,7 +24,7 @@ export default function RootLayout({
             <nav aria-label="Primary">
               <Link href="/quiz/">Quiz</Link>
               <Link href="/compare/">Compare</Link>
-              <a href="https://github.com/chris-bateman/whichiac" target="_blank" rel="noreferrer">
+              <a href="https://github.com/chris-bateman/Which-IaC" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </nav>
@@ -32,7 +32,7 @@ export default function RootLayout({
           <main className="content">{children}</main>
           <footer className="site-footer">
             <div>
-              <a href="https://github.com/chris-bateman/whichiac" target="_blank" rel="noreferrer">
+              <a href="https://github.com/chris-bateman/Which-IaC" target="_blank" rel="noreferrer">
                 View the project on GitHub
               </a>
             </div>
