@@ -371,6 +371,33 @@ button:disabled {
   color: var(--muted);
 }
 
+.answer-recap {
+  display: grid;
+  gap: 1rem;
+}
+
+.recap-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.recap-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: #fff;
+}
+
+.recap-question {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.recap-answer {
+  color: var(--muted);
+}
+
 .compare {
   display: grid;
   gap: 1.5rem;

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import tools from '../../data/tools.json';
 import { recommend, type AnswerMap } from '../../lib/recommend';
+import questions from '../../data/questions.json';
 
 const ANSWER_KEY = 'whichiac:answers';
 
@@ -111,6 +112,24 @@ export default function ResultPage() {
           );
         })}
       </div>
+
+      <section className="answer-recap">
+        <h2>Your answers</h2>
+        <div className="recap-grid">
+          {questions.map((question) => {
+            const selected = answers[question.id];
+            const label =
+              question.options.find((option) => option.value === selected)?.label ??
+              'Not answered';
+            return (
+              <div key={question.id} className="recap-card">
+                <div className="recap-question">{question.prompt}</div>
+                <div className="recap-answer">{label}</div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       <section className="excluded">
         <h2>Excluded tools</h2>
