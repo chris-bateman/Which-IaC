@@ -5,6 +5,9 @@ node_modules/
 .next/
 out/
 
+# TypeScript
+tsconfig.tsbuildinfo
+
 # caches
 .cache/
 .turbo/
