@@ -118,4 +118,20 @@ describe('recommend', () => {
       expect(toolIds.has(key)).toBe(true);
     }
   });
+
+  it('requires each tool to appear in at least one rule', () => {
+    const toolIds = tools.map((tool) => tool.id);
+    const referenced = new Set<string>();
+
+    for (const rule of rules.mustHave) {
+      for (const toolId of rule.excludes) referenced.add(toolId);
+    }
+    for (const rule of rules.weights) {
+      for (const toolId of Object.keys(rule.weights)) referenced.add(toolId);
+    }
+
+    for (const toolId of toolIds) {
+      expect(referenced.has(toolId)).toBe(true);
+    }
+  });
 });

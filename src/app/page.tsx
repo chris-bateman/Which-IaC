@@ -21,20 +21,23 @@ export default function HomePage() {
           </Link>
         </div>
       </div>
-        <div className="hero-card" aria-hidden="true">
-          <div className="hero-metric">
-            <div className="label">Tools</div>
-            <div className="value">{tools.length}</div>
-          </div>
-          <div className="hero-metric">
-            <div className="label">Questions</div>
-            <div className="value">{questions.length}</div>
-          </div>
-          <div className="hero-metric">
-            <div className="label">Rules</div>
-            <div className="value">{rules.mustHave.length + rules.weights.length}</div>
-          </div>
-        </div>
+      <div className="hero-card">
+        <Link className="hero-metric" href="/compare/">
+          <div className="label">Tools</div>
+          <div className="value">{tools.length}</div>
+          <span className="metric-link">View list</span>
+        </Link>
+        <Link className="hero-metric" href="/about/#questions">
+          <div className="label">Questions</div>
+          <div className="value">{questions.length}</div>
+          <span className="metric-link">See the quiz</span>
+        </Link>
+        <Link className="hero-metric" href="/about/#rules">
+          <div className="label">Rules</div>
+          <div className="value">{rules.mustHave.length + rules.weights.length}</div>
+          <span className="metric-link">How ranking works</span>
+        </Link>
+      </div>
     </section>
   );
 }

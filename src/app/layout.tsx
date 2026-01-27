@@ -24,6 +24,7 @@ export default function RootLayout({
             <nav aria-label="Primary">
               <Link href="/quiz/">Quiz</Link>
               <Link href="/compare/">Compare</Link>
+              <Link href="/about/">About</Link>
               <a href="https://github.com/chris-bateman/Which-IaC" target="_blank" rel="noreferrer">
                 GitHub
               </a>
