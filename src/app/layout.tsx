@@ -19,7 +19,7 @@ export default function RootLayout({
           <header className="site-header">
             <div className="brand">
               <Link href="/">Which IaC</Link>
-              <span className="tagline">Clear choices without the jargon</span>
+              <span className="tagline">Tools that fit your needs</span>
             </div>
             <nav aria-label="Primary">
               <Link href="/quiz/">Quiz</Link>

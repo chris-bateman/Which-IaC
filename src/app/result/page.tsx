@@ -75,7 +75,11 @@ export default function ResultPage() {
               <header>
                 <div className="rank">#{index + 1}</div>
                 <div>
-                  <h2>{tool?.name ?? item.toolId}</h2>
+                  <h2>
+                    <Link href={`/tools/${item.toolId}/`}>
+                      {tool?.name ?? item.toolId}
+                    </Link>
+                  </h2>
                 </div>
               </header>
 
@@ -105,9 +109,6 @@ export default function ResultPage() {
                 </div>
               ) : null}
 
-              <Link className="text-link" href={`/tools/${item.toolId}/`}>
-                View tool facts
-              </Link>
             </article>
           );
         })}
@@ -151,7 +152,11 @@ export default function ResultPage() {
                       tool?.name ?? item.toolId
                     )}
                   </h3>
-                  <p className="excluded-reasons">{item.reasons.join(' ')}</p>
+                  <ul className="excluded-reasons">
+                    {item.reasons.map((reason) => (
+                      <li key={reason}>{reason}</li>
+                    ))}
+                  </ul>
                 </article>
               );
             })}

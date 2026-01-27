@@ -17,22 +17,6 @@
       "reason": "Requires AWS CloudFormation as the deployment engine."
     },
     {
-      "id": "mh-general-purpose",
-      "questionId": "language_preference",
-      "match": { "equals": "general_purpose" },
-      "excludes": [
-        "terraform",
-        "opentofu",
-        "formae",
-        "ansible",
-        "puppet",
-        "chef",
-        "aws-cloudformation",
-        "crossplane"
-      ],
-      "reason": "Requires general-purpose programming languages (TypeScript, Python, etc.)."
-    },
-    {
       "id": "mh-no-state-files",
       "questionId": "no_state_files",
       "match": { "equals": "yes" },
@@ -41,6 +25,24 @@
     }
   ],
   "weights": [
+    {
+      "id": "w-general-purpose",
+      "questionId": "language_preference",
+      "match": { "equals": "general_purpose" },
+      "weights": {
+        "aws-cdk": 3,
+        "pulumi": 3,
+        "terraform": 0,
+        "opentofu": 0,
+        "aws-cloudformation": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 0
+      },
+      "message": "Prefers general-purpose programming languages."
+    },
     {
       "id": "w-declarative",
       "questionId": "language_preference",

@@ -7,10 +7,10 @@ export default function HomePage() {
   return (
     <section className="hero">
       <div className="hero-text">
-        <h1>Find the right automation tool with clear, practical guidance.</h1>
+        <h1>Find the tool that suits your needs.</h1>
         <p>
-          Compare infrastructure provisioning, configuration management, and control-plane
-          options using official documentation and simple, transparent rules.
+          Compare tools for infrastructure, configuration, and platform automation using
+          official documentation and clear rules.
         </p>
         <div className="actions">
           <Link className="primary" href="/quiz/">
