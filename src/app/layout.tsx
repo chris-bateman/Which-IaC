@@ -1,0 +1,44 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Which IaC',
+  description: 'Compare infrastructure as code tools with transparent, auditable rules.'
+};
+
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body suppressHydrationWarning>
+        <div className="page">
+          <header className="site-header">
+            <div className="brand">
+              <Link href="/">Which IaC</Link>
+              <span className="tagline">Clear choices without the jargon</span>
+            </div>
+            <nav aria-label="Primary">
+              <Link href="/quiz/">Quiz</Link>
+              <Link href="/compare/">Compare</Link>
+              <a href="https://github.com/chris-bateman/whichiac" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </nav>
+          </header>
+          <main className="content">{children}</main>
+          <footer className="site-footer">
+            <div>
+              <a href="https://github.com/chris-bateman/whichiac" target="_blank" rel="noreferrer">
+                View the project on GitHub
+              </a>
+            </div>
+          </footer>
+        </div>
+      </body>
+    </html>
+  );
+}

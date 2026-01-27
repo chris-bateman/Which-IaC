@@ -1,0 +1,69 @@
+[
+  {
+    "id": "cloudformation_required",
+    "prompt": "Do you require AWS CloudFormation as the deployment engine?",
+    "helpText": "Some organizations require CloudFormation-managed deployments for governance or change control.",
+    "type": "single",
+    "options": [
+      { "value": "yes", "label": "Yes, CloudFormation is required" },
+      { "value": "no", "label": "No" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  },
+  {
+    "id": "language_preference",
+    "prompt": "Which definition style do you prefer?",
+    "helpText": "Choose the primary way you want to describe automation or infrastructure.",
+    "type": "single",
+    "options": [
+      { "value": "general_purpose", "label": "General-purpose programming languages" },
+      { "value": "declarative", "label": "Declarative configuration language" },
+      { "value": "no_preference", "label": "No preference" }
+    ]
+  },
+  {
+    "id": "automation_focus",
+    "prompt": "What are you primarily trying to automate?",
+    "helpText": "This helps distinguish infrastructure provisioning, configuration management, and control-plane orchestration.",
+    "type": "single",
+    "options": [
+      { "value": "infra_provisioning", "label": "Provisioning and managing cloud infrastructure" },
+      { "value": "config_management", "label": "Configuring and maintaining servers and apps" },
+      { "value": "control_plane", "label": "Building a platform control plane on Kubernetes" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  },
+  {
+    "id": "target_scope",
+    "prompt": "What is your primary target scope?",
+    "helpText": "This influences whether AWS-only focus or multi-cloud tooling is a better fit.",
+    "type": "single",
+    "options": [
+      { "value": "aws_only", "label": "AWS only" },
+      { "value": "multi_cloud", "label": "Multi-cloud" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  },
+  {
+    "id": "no_state_files",
+    "prompt": "Do you require a tool that does not use separate state files?",
+    "helpText": "Some tools store state externally; others avoid separate state files entirely.",
+    "type": "single",
+    "options": [
+      { "value": "yes", "label": "Yes, no separate state files" },
+      { "value": "no", "label": "No, state files are acceptable" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  },
+  {
+    "id": "managed_state",
+    "prompt": "Do you need a managed state backend?",
+    "helpText": "A managed backend stores state with locking and history handled by a service.",
+    "type": "single",
+    "options": [
+      { "value": "yes", "label": "Yes, managed state is required" },
+      { "value": "no", "label": "No, we can manage state ourselves" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  }
+]

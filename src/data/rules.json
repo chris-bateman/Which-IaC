@@ -1,0 +1,171 @@
+{
+  "mustHave": [
+    {
+      "id": "mh-cloudformation",
+      "questionId": "cloudformation_required",
+      "match": { "equals": "yes" },
+      "excludes": [
+        "pulumi",
+        "terraform",
+        "opentofu",
+        "formae",
+        "ansible",
+        "puppet",
+        "chef",
+        "crossplane"
+      ],
+      "reason": "Requires AWS CloudFormation as the deployment engine."
+    },
+    {
+      "id": "mh-general-purpose",
+      "questionId": "language_preference",
+      "match": { "equals": "general_purpose" },
+      "excludes": [
+        "terraform",
+        "opentofu",
+        "formae",
+        "ansible",
+        "puppet",
+        "chef",
+        "aws-cloudformation",
+        "crossplane"
+      ],
+      "reason": "Requires general-purpose programming languages (TypeScript, Python, etc.)."
+    },
+    {
+      "id": "mh-no-state-files",
+      "questionId": "no_state_files",
+      "match": { "equals": "yes" },
+      "excludes": ["pulumi", "terraform", "opentofu"],
+      "reason": "Requires a tool that does not use separate state files."
+    }
+  ],
+  "weights": [
+    {
+      "id": "w-declarative",
+      "questionId": "language_preference",
+      "match": { "equals": "declarative" },
+      "weights": {
+        "terraform": 3,
+        "opentofu": 3,
+        "aws-cloudformation": 3,
+        "pulumi": 1,
+        "formae": 2,
+        "ansible": 2,
+        "puppet": 2,
+        "chef": 1,
+        "aws-cdk": 0,
+        "crossplane": 0
+      },
+      "message": "Prefers declarative configuration language."
+    },
+    {
+      "id": "w-focus-infra",
+      "questionId": "automation_focus",
+      "match": { "equals": "infra_provisioning" },
+      "weights": {
+        "aws-cdk": 3,
+        "aws-cloudformation": 3,
+        "terraform": 3,
+        "opentofu": 3,
+        "pulumi": 3,
+        "formae": 2,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 1
+      },
+      "message": "Primary focus is infrastructure provisioning."
+    },
+    {
+      "id": "w-focus-config",
+      "questionId": "automation_focus",
+      "match": { "equals": "config_management" },
+      "weights": {
+        "ansible": 3,
+        "puppet": 3,
+        "chef": 3,
+        "aws-cdk": 0,
+        "aws-cloudformation": 0,
+        "terraform": 0,
+        "opentofu": 0,
+        "pulumi": 0,
+        "formae": 0,
+        "crossplane": 0
+      },
+      "message": "Primary focus is configuration management."
+    },
+    {
+      "id": "w-focus-control-plane",
+      "questionId": "automation_focus",
+      "match": { "equals": "control_plane" },
+      "weights": {
+        "crossplane": 3,
+        "aws-cdk": 0,
+        "aws-cloudformation": 0,
+        "terraform": 0,
+        "opentofu": 0,
+        "pulumi": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0
+      },
+      "message": "Primary focus is Kubernetes control-plane orchestration."
+    },
+    {
+      "id": "w-aws-only",
+      "questionId": "target_scope",
+      "match": { "equals": "aws_only" },
+      "weights": {
+        "aws-cdk": 3,
+        "aws-cloudformation": 3,
+        "pulumi": 0,
+        "terraform": 0,
+        "opentofu": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 0
+      },
+      "message": "Primary target is AWS only."
+    },
+    {
+      "id": "w-multi-cloud",
+      "questionId": "target_scope",
+      "match": { "equals": "multi_cloud" },
+      "weights": {
+        "terraform": 3,
+        "opentofu": 3,
+        "pulumi": 3,
+        "aws-cdk": 0,
+        "aws-cloudformation": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 0
+      },
+      "message": "Primary target is multi-cloud."
+    },
+    {
+      "id": "w-managed-state",
+      "questionId": "managed_state",
+      "match": { "equals": "yes" },
+      "weights": {
+        "terraform": 2,
+        "pulumi": 2,
+        "aws-cdk": 0,
+        "aws-cloudformation": 0,
+        "opentofu": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 0
+      },
+      "message": "Requires a managed state backend."
+    }
+  ]
+}

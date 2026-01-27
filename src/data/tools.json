@@ -1,0 +1,248 @@
+[
+  {
+    "id": "aws-cdk",
+    "name": "AWS CDK",
+    "summary": "Defines AWS infrastructure in code and synthesizes to AWS CloudFormation templates.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["AWS"],
+    "definitionModel": "General-purpose programming languages",
+    "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Java", "C#", "Go"],
+    "stateModel": "CloudFormation-managed",
+    "executionModel": "CDK CLI synthesizes and deploys via CloudFormation",
+    "officialDocs": [
+      {
+        "label": "AWS CDK Developer Guide",
+        "url": "https://docs.aws.amazon.com/cdk/v2/guide/home.html"
+      },
+      {
+        "label": "AWS CDK API Reference",
+        "url": "https://docs.aws.amazon.com/cdk/v2/guide/reference.html"
+      },
+      {
+        "label": "AWS CDK GitHub",
+        "url": "https://github.com/aws/aws-cdk"
+      }
+    ]
+  },
+  {
+    "id": "pulumi",
+    "name": "Pulumi",
+    "summary": "Defines infrastructure using general-purpose programming languages and a unified CLI/workflow.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["Multi-cloud"],
+    "definitionModel": "General-purpose programming languages (and YAML)",
+    "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Go", ".NET", "Java", "YAML"],
+    "stateModel": "Pulumi state backend",
+    "executionModel": "Pulumi CLI with local or hosted backends",
+    "officialDocs": [
+      {
+        "label": "Pulumi Docs",
+        "url": "https://www.pulumi.com/docs/"
+      },
+      {
+        "label": "Pulumi CLI Reference",
+        "url": "https://www.pulumi.com/docs/reference/cli/"
+      },
+      {
+        "label": "Pulumi GitHub",
+        "url": "https://github.com/pulumi/pulumi"
+      }
+    ]
+  },
+  {
+    "id": "terraform",
+    "name": "Terraform",
+    "summary": "Declarative configuration language (HCL) to provision and manage infrastructure via providers.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["Multi-cloud"],
+    "definitionModel": "Declarative configuration language (HCL)",
+    "supportedLanguages": ["HCL"],
+    "stateModel": "Terraform state (local or remote)",
+    "executionModel": "Terraform CLI with provider plugins",
+    "officialDocs": [
+      {
+        "label": "Terraform Documentation",
+        "url": "https://developer.hashicorp.com/terraform"
+      },
+      {
+        "label": "Terraform CLI Docs",
+        "url": "https://developer.hashicorp.com/terraform/cli"
+      },
+      {
+        "label": "Terraform GitHub",
+        "url": "https://github.com/hashicorp/terraform"
+      }
+    ]
+  },
+  {
+    "id": "opentofu",
+    "name": "OpenTofu",
+    "summary": "Open-source infrastructure as code tool using OpenTofu configurations.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["Cloud and on-prem resources (via providers)"],
+    "definitionModel": "Declarative configuration (OpenTofu language)",
+    "supportedLanguages": ["OpenTofu language"],
+    "stateModel": "OpenTofu state (local or remote)",
+    "executionModel": "OpenTofu CLI",
+    "officialDocs": [
+      {
+        "label": "OpenTofu Documentation",
+        "url": "https://opentofu.org/docs/"
+      },
+      {
+        "label": "OpenTofu Language Documentation",
+        "url": "https://opentofu.org/docs/v1.6/language/"
+      },
+      {
+        "label": "OpenTofu Providers",
+        "url": "https://opentofu.org/docs/language/providers/"
+      },
+      {
+        "label": "OpenTofu CLI Documentation",
+        "url": "https://opentofu.org/docs/cli/"
+      },
+      {
+        "label": "OpenTofu Backend Configuration",
+        "url": "https://opentofu.org/docs/language/settings/backends/configuration/"
+      },
+      {
+        "label": "OpenTofu GitHub",
+        "url": "https://github.com/opentofu/opentofu"
+      }
+    ]
+  },
+  {
+    "id": "aws-cloudformation",
+    "name": "AWS CloudFormation",
+    "summary": "AWS service that uses templates to provision and manage stacks.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["AWS"],
+    "definitionModel": "Declarative templates",
+    "supportedLanguages": ["YAML", "JSON"],
+    "stateModel": "CloudFormation-managed",
+    "executionModel": "CloudFormation service manages stacks",
+    "officialDocs": [
+      {
+        "label": "AWS CloudFormation User Guide",
+        "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+      },
+      {
+        "label": "CloudFormation Template Formats",
+        "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html"
+      }
+    ]
+  },
+  {
+    "id": "formae",
+    "name": "formae",
+    "summary": "Code-based IaC platform that models infrastructure as code without separate state files.",
+    "focus": "Infrastructure provisioning",
+    "primaryTargets": ["Not stated in official docs"],
+    "definitionModel": "Declarative code (Pkl)",
+    "supportedLanguages": ["Pkl"],
+    "stateModel": "No separate state files",
+    "executionModel": "formae CLI applies and extracts formae",
+    "officialDocs": [
+      {
+        "label": "formae Docs",
+        "url": "https://docs.formae.io/en/latest/"
+      },
+      {
+        "label": "formae GitHub",
+        "url": "https://github.com/platform-engineering-labs/formae"
+      }
+    ]
+  },
+  {
+    "id": "ansible",
+    "name": "Ansible",
+    "summary": "Automation and configuration management using YAML playbooks.",
+    "focus": "Configuration management",
+    "primaryTargets": ["Not stated in official docs"],
+    "definitionModel": "Declarative YAML playbooks",
+    "supportedLanguages": ["YAML"],
+    "stateModel": "No separate state files",
+    "executionModel": "ansible-playbook runs playbooks in order",
+    "officialDocs": [
+      {
+        "label": "Ansible Playbooks Intro",
+        "url": "https://docs.ansible.com/ansible/7/playbook_guide/playbooks_intro.html"
+      },
+      {
+        "label": "Ansible Documentation",
+        "url": "https://docs.ansible.com/ansible/latest/"
+      },
+      {
+        "label": "Ansible GitHub",
+        "url": "https://github.com/ansible/ansible"
+      }
+    ]
+  },
+  {
+    "id": "puppet",
+    "name": "Puppet",
+    "summary": "Declarative language to describe desired system state and apply it to nodes.",
+    "focus": "Configuration management",
+    "primaryTargets": ["Not stated in official docs"],
+    "definitionModel": "Declarative Puppet language",
+    "supportedLanguages": ["Puppet DSL"],
+    "stateModel": "No separate state files",
+    "executionModel": "Manifests compile into catalogs applied to nodes",
+    "officialDocs": [
+      {
+        "label": "Puppet Language Documentation",
+        "url": "https://www.puppet.com/docs/puppet/7/puppet_language.html"
+      },
+      {
+        "label": "Puppet GitHub",
+        "url": "https://github.com/puppetlabs/puppet"
+      }
+    ]
+  },
+  {
+    "id": "chef",
+    "name": "Chef Infra",
+    "summary": "Configuration management with Chef Infra Client to bring nodes to desired state.",
+    "focus": "Configuration management",
+    "primaryTargets": ["Not stated in official docs"],
+    "definitionModel": "Chef Infra resources and recipes",
+    "supportedLanguages": ["Ruby DSL"],
+    "stateModel": "No separate state files",
+    "executionModel": "Chef Infra Client applies recipes to converge nodes",
+    "officialDocs": [
+      {
+        "label": "Chef Infra Overview",
+        "url": "https://docs.chef.io/chef_overview/"
+      },
+      {
+        "label": "Chef Documentation",
+        "url": "https://docs.chef.io/"
+      }
+    ]
+  },
+  {
+    "id": "crossplane",
+    "name": "Crossplane",
+    "summary": "Cloud-native control plane framework built on Kubernetes.",
+    "focus": "Control plane and orchestration",
+    "primaryTargets": ["Kubernetes-based control planes"],
+    "definitionModel": "Kubernetes custom resources (declarative APIs)",
+    "supportedLanguages": ["Kubernetes YAML"],
+    "stateModel": "Kubernetes API state",
+    "executionModel": "Controllers reconcile managed resources",
+    "officialDocs": [
+      {
+        "label": "What is Crossplane",
+        "url": "https://docs.crossplane.io/latest/whats-crossplane/"
+      },
+      {
+        "label": "Crossplane Home",
+        "url": "https://www.crossplane.io/"
+      },
+      {
+        "label": "Crossplane GitHub",
+        "url": "https://github.com/crossplane/crossplane"
+      }
+    ]
+  }
+]
