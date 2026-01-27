@@ -45,14 +45,15 @@ describe('recommend', () => {
     ]);
   });
 
-  it('excludes tools when no state files are required', () => {
+  it('weights state-backend preference without excluding tools', () => {
     const result = recommend({
       ...baseAnswers,
       no_state_files: 'yes'
     });
 
-    const excludedIds = result.excluded.map((item) => item.toolId).sort();
-    expect(excludedIds).toEqual(['opentofu', 'pulumi', 'terraform']);
+    const scores = new Map(result.ranked.map((item) => [item.toolId, item.score]));
+    expect(scores.get('aws-cdk')).toBeGreaterThan(scores.get('terraform') ?? 0);
+    expect(scores.get('aws-cloudformation')).toBeGreaterThan(scores.get('opentofu') ?? 0);
   });
 
   it('applies weighted scoring and sorts by score', () => {
@@ -63,8 +64,7 @@ describe('recommend', () => {
     });
 
     const rankedIds = result.ranked.map((item) => item.toolId);
-    expect(rankedIds[0]).toBe('opentofu');
-    expect(rankedIds[1]).toBe('terraform');
+    expect(rankedIds.slice(0, 3)).toEqual(['opentofu', 'terraform', 'crossplane']);
   });
 
   it('orders ties by tool name deterministically', () => {

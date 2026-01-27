@@ -7,7 +7,7 @@
     "primaryTargets": ["AWS"],
     "definitionModel": "General-purpose programming languages",
     "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Java", "C#", "Go"],
-    "stateModel": "CloudFormation-managed",
+    "stateModel": "CloudFormation-managed (stack state)",
     "executionModel": "CDK CLI synthesizes and deploys via CloudFormation",
     "officialDocs": [
       {
@@ -32,7 +32,7 @@
     "primaryTargets": ["Multi-cloud"],
     "definitionModel": "General-purpose programming languages (and YAML)",
     "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Go", ".NET", "Java", "YAML"],
-    "stateModel": "Pulumi state backend",
+    "stateModel": "Pulumi state backend (managed or self-managed)",
     "executionModel": "Pulumi CLI with local or hosted backends",
     "officialDocs": [
       {
@@ -57,7 +57,7 @@
     "primaryTargets": ["Multi-cloud"],
     "definitionModel": "Declarative configuration language (HCL)",
     "supportedLanguages": ["HCL"],
-    "stateModel": "Terraform state (local or remote)",
+    "stateModel": "Terraform state backend (local or remote)",
     "executionModel": "Terraform CLI with provider plugins",
     "officialDocs": [
       {
@@ -79,10 +79,10 @@
     "name": "OpenTofu",
     "summary": "Open-source infrastructure as code tool using OpenTofu configurations.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["Cloud and on-prem resources (via providers)"],
+    "primaryTargets": ["Multi-cloud"],
     "definitionModel": "Declarative configuration (OpenTofu language)",
     "supportedLanguages": ["OpenTofu language"],
-    "stateModel": "OpenTofu state (local or remote)",
+    "stateModel": "OpenTofu state backend (local or remote)",
     "executionModel": "OpenTofu CLI",
     "officialDocs": [
       {
@@ -119,7 +119,7 @@
     "primaryTargets": ["AWS"],
     "definitionModel": "Declarative templates",
     "supportedLanguages": ["YAML", "JSON"],
-    "stateModel": "CloudFormation-managed",
+    "stateModel": "Service-managed (stack state)",
     "executionModel": "CloudFormation service manages stacks",
     "officialDocs": [
       {
@@ -140,7 +140,7 @@
     "primaryTargets": ["Not stated in official docs"],
     "definitionModel": "Declarative code (Pkl)",
     "supportedLanguages": ["Pkl"],
-    "stateModel": "No separate state files",
+    "stateModel": "No separate state backend",
     "executionModel": "formae CLI applies and extracts formae",
     "officialDocs": [
       {
@@ -161,7 +161,7 @@
     "primaryTargets": ["Not stated in official docs"],
     "definitionModel": "Declarative YAML playbooks",
     "supportedLanguages": ["YAML"],
-    "stateModel": "No separate state files",
+    "stateModel": "No separate state backend",
     "executionModel": "ansible-playbook runs playbooks in order",
     "officialDocs": [
       {
@@ -186,7 +186,7 @@
     "primaryTargets": ["Not stated in official docs"],
     "definitionModel": "Declarative Puppet language",
     "supportedLanguages": ["Puppet DSL"],
-    "stateModel": "No separate state files",
+    "stateModel": "No separate state backend",
     "executionModel": "Manifests compile into catalogs applied to nodes",
     "officialDocs": [
       {
@@ -207,7 +207,7 @@
     "primaryTargets": ["Not stated in official docs"],
     "definitionModel": "Chef Infra resources and recipes",
     "supportedLanguages": ["Ruby DSL"],
-    "stateModel": "No separate state files",
+    "stateModel": "No separate state backend",
     "executionModel": "Chef Infra Client applies recipes to converge nodes",
     "officialDocs": [
       {

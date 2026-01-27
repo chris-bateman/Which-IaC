@@ -15,13 +15,6 @@
         "crossplane"
       ],
       "reason": "Requires AWS CloudFormation as the deployment engine."
-    },
-    {
-      "id": "mh-no-state-files",
-      "questionId": "no_state_files",
-      "match": { "equals": "yes" },
-      "excludes": ["pulumi", "terraform", "opentofu"],
-      "reason": "Requires a tool that does not use separate state files."
     }
   ],
   "weights": [
@@ -56,10 +49,10 @@
         "ansible": 2,
         "puppet": 2,
         "chef": 1,
-        "aws-cdk": 0,
-        "crossplane": 0
+        "crossplane": 3,
+        "aws-cdk": 0
       },
-      "message": "Prefers declarative configuration language."
+      "message": "Prefers declarative configuration and templates."
     },
     {
       "id": "w-focus-infra",
@@ -72,10 +65,10 @@
         "opentofu": 3,
         "pulumi": 3,
         "formae": 2,
+        "crossplane": 1,
         "ansible": 0,
         "puppet": 0,
-        "chef": 0,
-        "crossplane": 1
+        "chef": 0
       },
       "message": "Primary focus is infrastructure provisioning."
     },
@@ -87,11 +80,11 @@
         "ansible": 3,
         "puppet": 3,
         "chef": 3,
+        "terraform": 1,
+        "opentofu": 1,
+        "pulumi": 1,
         "aws-cdk": 0,
         "aws-cloudformation": 0,
-        "terraform": 0,
-        "opentofu": 0,
-        "pulumi": 0,
         "formae": 0,
         "crossplane": 0
       },
@@ -103,11 +96,11 @@
       "match": { "equals": "control_plane" },
       "weights": {
         "crossplane": 3,
+        "terraform": 1,
+        "opentofu": 1,
+        "pulumi": 1,
         "aws-cdk": 0,
         "aws-cloudformation": 0,
-        "terraform": 0,
-        "opentofu": 0,
-        "pulumi": 0,
         "formae": 0,
         "ansible": 0,
         "puppet": 0,
@@ -116,22 +109,40 @@
       "message": "Primary focus is Kubernetes control-plane orchestration."
     },
     {
-      "id": "w-aws-only",
+      "id": "w-aws-native",
       "questionId": "target_scope",
-      "match": { "equals": "aws_only" },
+      "match": { "equals": "aws_native" },
       "weights": {
         "aws-cdk": 3,
         "aws-cloudformation": 3,
-        "pulumi": 0,
-        "terraform": 0,
-        "opentofu": 0,
+        "pulumi": 1,
+        "terraform": 1,
+        "opentofu": 1,
         "formae": 0,
         "ansible": 0,
         "puppet": 0,
         "chef": 0,
         "crossplane": 0
       },
-      "message": "Primary target is AWS only."
+      "message": "Prefers AWS-native integration."
+    },
+    {
+      "id": "w-aws-only",
+      "questionId": "target_scope",
+      "match": { "equals": "aws_only" },
+      "weights": {
+        "aws-cdk": 2,
+        "aws-cloudformation": 2,
+        "pulumi": 2,
+        "terraform": 2,
+        "opentofu": 2,
+        "formae": 1,
+        "ansible": 1,
+        "puppet": 1,
+        "chef": 1,
+        "crossplane": 1
+      },
+      "message": "AWS is the only provider today, but portability still matters."
     },
     {
       "id": "w-multi-cloud",
@@ -141,33 +152,51 @@
         "terraform": 3,
         "opentofu": 3,
         "pulumi": 3,
+        "crossplane": 2,
+        "ansible": 1,
+        "puppet": 1,
+        "chef": 1,
         "aws-cdk": 0,
         "aws-cloudformation": 0,
-        "formae": 0,
+        "formae": 0
+      },
+      "message": "Targets multiple cloud providers."
+    },
+    {
+      "id": "w-avoid-state-backend",
+      "questionId": "no_state_files",
+      "match": { "equals": "yes" },
+      "weights": {
+        "aws-cdk": 3,
+        "aws-cloudformation": 3,
+        "formae": 3,
+        "pulumi": 2,
+        "crossplane": 2,
+        "terraform": 0,
+        "opentofu": 0,
         "ansible": 0,
         "puppet": 0,
-        "chef": 0,
-        "crossplane": 0
+        "chef": 0
       },
-      "message": "Primary target is multi-cloud."
+      "message": "Prefers tools that avoid operating a separate state backend."
     },
     {
       "id": "w-managed-state",
       "questionId": "managed_state",
       "match": { "equals": "yes" },
       "weights": {
+        "pulumi": 3,
         "terraform": 2,
-        "pulumi": 2,
+        "opentofu": 1,
         "aws-cdk": 0,
         "aws-cloudformation": 0,
-        "opentofu": 0,
+        "crossplane": 1,
         "formae": 0,
         "ansible": 0,
         "puppet": 0,
-        "chef": 0,
-        "crossplane": 0
+        "chef": 0
       },
-      "message": "Requires a managed state backend."
+      "message": "Prefers a managed state service."
     }
   ]
 }

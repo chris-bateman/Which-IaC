@@ -3,11 +3,15 @@
 Thanks for helping improve Which IaC. Please follow these guidelines so the project remains factual, auditable, and unbiased.
 
 ## Facts and sources
-- Facts in `src/data/tools.json` must link to primary or official sources.
-- If you add or change a fact, include the official reference in the `officialDocs` list.
-- Avoid claims that are subjective or hard to validate.
+ - If a detail is not explicitly stated in official sources (e.g., `primaryTargets`), use the placeholder "Not stated in official docs" instead of inferring.
+
+## Contribution workflow
+ - Accepted `focus` categories in this project include: "Infrastructure provisioning", "Configuration management", and "Control plane and orchestration".
+- Facts in `src/data/tools.json` include primary sources in `officialDocs`.
+- Rule or weight changes include a clear rationale in the PR description.
 
 ## Adding a tool (other IaC frameworks)
+ - Where official docs are silent, placeholders like "Not stated in official docs" are used explicitly without inference.
 ### `src/data/tools.json`
 - Add the tool entry and include official documentation links.
 - Keep fields consistent with existing tools; update UI only if you add new fields.

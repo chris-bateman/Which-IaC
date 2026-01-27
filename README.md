@@ -1,6 +1,6 @@
 # Which IaC
 
-A transparent, static Next.js 16+ site that helps users choose between infrastructure and automation tools using auditable data and rules.
+A site that helps users choose between infrastructure and automation tools using auditable data and rules.
 
 ## Features
 - Static export ready for GitHub Pages
@@ -9,6 +9,15 @@ A transparent, static Next.js 16+ site that helps users choose between infrastru
 - Per-tool fact pages with official references
 - About page that explains questions and rules
 - Minimal, accessible UI
+
+## Quick Start
+- Prerequisites: Node.js 18+ and npm
+- Install and run locally:
+```
+npm install
+npm run dev
+```
+Open `http://localhost:3000/`.
 
 ## Project structure
 ```
@@ -26,6 +35,8 @@ src/lib/recommend.ts     # Recommendation engine
   `supportedLanguages`, `stateModel`, `executionModel`, `officialDocs`.
 - `id` must be unique and URL-safe (used in `/tools/[tool]/` routes).
 - `officialDocs` must include primary/official sources and are shown as references in the UI.
+- When official sources do not explicitly state a detail (for example, `primaryTargets`), use the explicit placeholder `"Not stated in official docs"` rather than inference.
+- Common `focus` categories used in this project include: "Infrastructure provisioning", "Configuration management", and "Control plane and orchestration".
 Example:
 ```json
 {
@@ -79,14 +90,14 @@ Example:
 }
 ```
 
-## Local development
+## Development & tests
 ```
 npm install
 npm run dev
+npm run test
 ```
-Open `http://localhost:3000/`.
 
-## Static export (Pages preview)
+## Static export (local preview)
 ```
 NEXT_PUBLIC_BASE_PATH="" npm run build
 npx serve out
@@ -95,8 +106,8 @@ Open the URL printed by `serve`.
 
 ## GitHub Pages deployment
 - `next.config.js` uses a base path for production builds. This repo expects `/Which-IaC`.
-- The deploy workflow sets `NEXT_PUBLIC_BASE_PATH=/Which-IaC` during build.
-- The workflow in `.github/workflows/deploy.yml` builds and uploads the `out` directory.
+- The deploy workflow should set `NEXT_PUBLIC_BASE_PATH=/Which-IaC` during build.
+- Ensure a workflow exists at `.github/workflows/deploy.yml` that builds and uploads the `out` directory.
 
 ## Recommendation engine behavior
 1. Apply hard exclusions first (must-have requirements).
@@ -124,9 +135,6 @@ Open the URL printed by `serve`.
 - Update tests in `src/lib/recommend.test.ts` for new rule behavior.
 
 ## Contributing
-See `CONTRIBUTING.md` for fact sourcing, rule changes, and language guidelines.
+See `CONTRIBUTING.md` for fact sourcing, rule changes, language guidelines, and the PR checklist.
 
-## Tests
-```
-npm run test
-```
+ 

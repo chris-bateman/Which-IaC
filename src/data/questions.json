@@ -2,7 +2,7 @@
   {
     "id": "cloudformation_required",
     "prompt": "Do you require AWS CloudFormation as the deployment engine?",
-    "helpText": "Some organizations require CloudFormation-managed deployments for governance or change control.",
+    "helpText": "If CloudFormation is mandatory, only tools that deploy through CloudFormation should be considered.",
     "type": "single",
     "options": [
       { "value": "yes", "label": "Yes, CloudFormation is required" },
@@ -12,12 +12,12 @@
   },
   {
     "id": "language_preference",
-    "prompt": "Which definition style do you prefer?",
-    "helpText": "Choose the primary way you want to describe automation or infrastructure.",
+    "prompt": "How do you want to define infrastructure or automation?",
+    "helpText": "Declarative includes templates (YAML/JSON), HCL, or Kubernetes-style manifests. General-purpose means writing code in languages like TypeScript or Python.",
     "type": "single",
     "options": [
       { "value": "general_purpose", "label": "General-purpose programming languages" },
-      { "value": "declarative", "label": "Declarative configuration language" },
+      { "value": "declarative", "label": "Declarative configuration" },
       { "value": "no_preference", "label": "No preference" }
     ]
   },
@@ -35,34 +35,35 @@
   },
   {
     "id": "target_scope",
-    "prompt": "What is your primary target scope?",
-    "helpText": "This influences whether AWS-only focus or multi-cloud tooling is a better fit.",
+    "prompt": "Which target scope best matches your needs?",
+    "helpText": "AWS-native favors tools built around AWS services. AWS-only means AWS today, but portability may still matter. Multi-cloud targets multiple providers.",
     "type": "single",
     "options": [
-      { "value": "aws_only", "label": "AWS only" },
+      { "value": "aws_native", "label": "AWS-native integration" },
+      { "value": "aws_only", "label": "AWS only (portability still matters)" },
       { "value": "multi_cloud", "label": "Multi-cloud" },
       { "value": "unsure", "label": "Not sure" }
     ]
   },
   {
     "id": "no_state_files",
-    "prompt": "Do you require a tool that does not use separate state files?",
-    "helpText": "Some tools store state externally; others avoid separate state files entirely.",
+    "prompt": "Do you want to avoid operating a separate state backend?",
+    "helpText": "Some tools store state in an external backend you operate. Others manage state within a service or engine so you don’t run the backend yourself.",
     "type": "single",
     "options": [
-      { "value": "yes", "label": "Yes, no separate state files" },
-      { "value": "no", "label": "No, state files are acceptable" },
+      { "value": "yes", "label": "Yes, avoid operating a separate state backend" },
+      { "value": "no", "label": "No, operating a state backend is fine" },
       { "value": "unsure", "label": "Not sure" }
     ]
   },
   {
     "id": "managed_state",
-    "prompt": "Do you need a managed state backend?",
-    "helpText": "A managed backend stores state with locking and history handled by a service.",
+    "prompt": "Do you prefer a managed state service (SaaS)?",
+    "helpText": "A managed service handles storage, locking, and history for state. This is separate from provider-native engines like CloudFormation.",
     "type": "single",
     "options": [
-      { "value": "yes", "label": "Yes, managed state is required" },
-      { "value": "no", "label": "No, we can manage state ourselves" },
+      { "value": "yes", "label": "Yes, prefer a managed state service" },
+      { "value": "no", "label": "No, self-managed is fine" },
       { "value": "unsure", "label": "Not sure" }
     ]
   }
