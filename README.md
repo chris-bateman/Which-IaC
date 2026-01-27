@@ -1,11 +1,11 @@
-# WhichIaC
+# Which IaC
 
-A transparent, static Next.js 14+ site that helps users choose between IaC tools (AWS CDK, Pulumi, Terraform, and formae) using auditable data and rules.
+A transparent, static Next.js 16+ site that helps users choose between infrastructure and automation tools using auditable data and rules.
 
 ## Features
 - Static export ready for GitHub Pages
 - Data-driven questionnaire and comparison views
-- Transparent scoring engine with hard exclusions and weighted rules
+- Transparent decision engine with hard exclusions and weighted rules
 - Per-tool fact pages with official references
 - Minimal, accessible UI
 
@@ -32,13 +32,14 @@ npx serve out
 Open the URL printed by `serve`.
 
 ## GitHub Pages deployment
-- `next.config.js` uses a base path for production builds. Replace `REPO_NAME` with your GitHub repository name.
+- `next.config.js` uses a base path for production builds. This repo expects `/Which-IaC`.
+- The deploy workflow sets `NEXT_PUBLIC_BASE_PATH=/Which-IaC` during build.
 - The workflow in `.github/workflows/deploy.yml` builds and uploads the `out` directory.
 
 ## Recommendation engine behavior
 1. Apply hard exclusions first (must-have requirements).
 2. Apply weighted scoring second.
-3. Produce explanations per tool (rules fired, weights applied).
+3. Produce explanations per tool (rules fired and why they matter).
 4. Show excluded tools with exact reasons.
 
 ## Adding a tool
@@ -61,6 +62,3 @@ See `CONTRIBUTING.md` for fact sourcing, rule changes, and language guidelines.
 ```
 npm run test
 ```
-
-## License
-Add a license of your choice.
