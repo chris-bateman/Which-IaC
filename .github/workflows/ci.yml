@@ -25,3 +25,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: E2E tests
+        env:
+          PLAYWRIGHT_BASE_URL: http://localhost:4173/Which-IaC/
+          BASE_PATH: /Which-IaC
+        run: npm run test:e2e

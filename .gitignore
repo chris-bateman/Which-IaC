@@ -12,6 +12,10 @@ tsconfig.tsbuildinfo
 .cache/
 .turbo/
 
+# Playwright
+playwright-report/
+test-results/
+
 # local env files
 .env
 .env.*

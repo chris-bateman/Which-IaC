@@ -8,6 +8,7 @@ A site that helps users choose between infrastructure and automation tools using
 - Transparent decision engine with hard exclusions and weighted rules
 - Per-tool fact pages with official references
 - About page that explains questions and rules
+- Playwright end-to-end tests for quiz, compare, and about flows
 - Minimal, accessible UI
 
 ## Quick Start
@@ -95,6 +96,17 @@ Example:
 npm install
 npm run dev
 npm run test
+npm run test:e2e
+```
+
+## End-to-end tests (Playwright)
+```
+npx playwright install --with-deps
+npm run test:e2e
+```
+The HTML report is generated in `playwright-report/`. Open it with:
+```
+npx playwright show-report
 ```
 
 ## Static export (local preview)

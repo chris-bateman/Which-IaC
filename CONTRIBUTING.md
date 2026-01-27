@@ -48,3 +48,5 @@ After adding a tool, ensure it appears in at least one rule (test will fail if i
 
 ## Testing
 - Run `npm run test` before submitting changes.
+- Run `npm run test:e2e` when updating quiz flow, compare table, or result logic.
+- If you ran Playwright locally, include a link or screenshot from `playwright-report/` in the PR.
