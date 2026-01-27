@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <section className="hero">
       <div className="hero-text">
-        <h1>Pick the right automation tool with calm, plain-spoken guidance.</h1>
+        <h1>Find the right automation tool with clear, practical guidance.</h1>
         <p>
           Compare infrastructure provisioning, configuration management, and control-plane
           options using official documentation and simple, transparent rules.
