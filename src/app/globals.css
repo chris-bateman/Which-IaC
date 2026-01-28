@@ -12,6 +12,26 @@
   --card: #ffffff;
   --shadow: rgba(30, 75, 63, 0.1);
   --focus: #a34a28;
+  --page-bg: radial-gradient(circle at top left, #fff1de, #f4f1ea 55%, #efe8dc 100%);
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --floating-bg: rgba(255, 255, 255, 0.85);
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1413;
+  --bg-alt: #141c1b;
+  --ink: #f2f0ea;
+  --muted: #b0b6b1;
+  --accent: #7fd7b7;
+  --accent-strong: #5fb89a;
+  --line: #2a3330;
+  --card: #121918;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --focus: #f0a46b;
+  --page-bg: radial-gradient(circle at top left, #1a2421, #0f1413 55%, #0b0f0f 100%);
+  --header-bg: rgba(18, 25, 24, 0.85);
+  --floating-bg: rgba(18, 25, 24, 0.85);
 }
 
 * {
@@ -23,7 +43,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top left, #fff1de, #f4f1ea 55%, #efe8dc 100%);
+  background: var(--page-bg);
   color: var(--ink);
   min-height: 100%;
 }
@@ -56,11 +76,17 @@ a:focus-visible {
   align-items: center;
   padding: 1.5rem 2.5rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .site-header nav {
@@ -96,6 +122,14 @@ a:focus-visible {
   font-size: 0.9rem;
   color: var(--muted);
   background: var(--bg-alt);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .hero {
@@ -159,6 +193,36 @@ button.ghost {
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.theme-toggle {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+  color: var(--ink);
+  padding: 0.45rem 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px var(--shadow);
+  border-color: var(--accent);
+}
+
+.theme-toggle-icon {
+  font-size: 1rem;
+}
+
+.theme-toggle-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
 }
 
 .hero-card {
@@ -253,7 +317,7 @@ button:disabled {
   border: 1px solid var(--line);
   border-radius: 12px;
   cursor: pointer;
-  background: #fff;
+  background: var(--card);
 }
 
 .choice input {
@@ -378,7 +442,7 @@ button:disabled {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem 1.25rem;
-  background: #fff;
+  background: var(--card);
 }
 
 .excluded-title {
@@ -409,7 +473,7 @@ button:disabled {
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 0.9rem 1rem;
-  background: #fff;
+  background: var(--card);
 }
 
 .recap-question {
@@ -528,7 +592,7 @@ td {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem 1.25rem;
-  background: #fff;
+  background: var(--card);
 }
 
 .about-card-header {
@@ -574,7 +638,7 @@ td {
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 1.25rem;
-  background: #fff;
+  background: var(--card);
   display: grid;
   gap: 1rem;
 }
@@ -647,9 +711,9 @@ td {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.25rem 1.5rem;
-  background: #fff;
-  color: #111;
-  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
 }
@@ -665,13 +729,9 @@ td {
 }
 
 .consent-manage {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  z-index: 1001;
   border: 0;
-  background: #ffffffcc;
-  color: #111;
+  background: var(--floating-bg);
+  color: var(--ink);
   padding: 0.5rem 0.85rem;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -693,6 +753,13 @@ td {
     padding: 1.5rem;
     flex-direction: column;
     align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
   }
 
@@ -719,7 +786,6 @@ td {
   }
 
   .consent-manage {
-    right: 1rem;
-    bottom: 5.75rem;
+    box-shadow: none;
   }
 }

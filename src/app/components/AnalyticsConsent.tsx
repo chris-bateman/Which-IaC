@@ -2,50 +2,28 @@
 
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
-
-const CONSENT_KEY = 'whichiac:analytics-consent';
+import { clearConsent, readConsent, writeConsent, type ConsentState } from '../../lib/consent';
 const GA_ID = 'G-XH11MVCS63';
-
-type ConsentState = 'unset' | 'granted' | 'denied';
 
 export default function AnalyticsConsent() {
   const [consent, setConsent] = useState<ConsentState>('unset');
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(CONSENT_KEY);
-      if (stored === 'granted' || stored === 'denied') {
-        setConsent(stored);
-      }
-    } catch {
-      setConsent('unset');
-    }
+    setConsent(readConsent(localStorage));
   }, []);
 
   const accept = () => {
-    try {
-      localStorage.setItem(CONSENT_KEY, 'granted');
-    } catch {
-      // Ignore storage failures; user will see the banner again next visit.
-    }
+    writeConsent(localStorage, 'granted');
     setConsent('granted');
   };
 
   const decline = () => {
-    try {
-      localStorage.setItem(CONSENT_KEY, 'denied');
-    } catch {
-      // Ignore storage failures; user will see the banner again next visit.
-    }
+    writeConsent(localStorage, 'denied');
     setConsent('denied');
   };
 
   const manage = () => {
-    try {
-      localStorage.removeItem(CONSENT_KEY);
-    } catch {
-      // Ignore storage failures; user will see the banner again next visit.
-    }
+    clearConsent(localStorage);
     setConsent('unset');
   };
 
