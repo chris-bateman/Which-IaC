@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
+import AnalyticsConsent from './components/AnalyticsConsent';
 
 export const metadata: Metadata = {
   title: 'Which IaC',
@@ -26,22 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XH11MVCS63"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XH11MVCS63');
-          `}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString }}
         />
+        <AnalyticsConsent />
         <div className="page">
           <header className="site-header">
             <div className="brand">
