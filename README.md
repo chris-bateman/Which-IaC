@@ -111,14 +111,13 @@ npx playwright show-report
 
 ## Static export (local preview)
 ```
-NEXT_PUBLIC_BASE_PATH="" npm run build
+npm run build
 npx serve out
 ```
 Open the URL printed by `serve`.
 
 ## GitHub Pages deployment
-- `next.config.js` uses a base path for production builds. This repo expects `/Which-IaC`.
-- The deploy workflow should set `NEXT_PUBLIC_BASE_PATH=/Which-IaC` during build.
+- Production deploys are expected at `https://whichiac.com/` (root domain, no base path).
 - Ensure a workflow exists at `.github/workflows/deploy.yml` that builds and uploads the `out` directory.
 
 ## Recommendation engine behavior

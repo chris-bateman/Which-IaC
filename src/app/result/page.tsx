@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import tools from '../../data/tools.json';
+import { normalizeAnswers } from '../../lib/answers';
 import { recommend, type AnswerMap } from '../../lib/recommend';
 import questions from '../../data/questions.json';
 
@@ -11,18 +12,21 @@ const ANSWER_KEY = 'whichiac:answers';
 const getTool = (toolId: string) => tools.find((tool) => tool.id === toolId);
 
 export default function ResultPage() {
-  const [answers, setAnswers] = useState<AnswerMap | null>(null);
+  const stored = useSyncExternalStore(
+    () => () => {},
+    () => localStorage.getItem(ANSWER_KEY),
+    () => null
+  );
 
-  useEffect(() => {
-    const stored = localStorage.getItem(ANSWER_KEY);
-    if (stored) {
-      try {
-        setAnswers(JSON.parse(stored) as AnswerMap);
-      } catch {
-        setAnswers(null);
-      }
+  const answers = useMemo(() => {
+    if (!stored) return null;
+    try {
+      const parsed = JSON.parse(stored) as AnswerMap;
+      return normalizeAnswers(parsed);
+    } catch {
+      return null;
     }
-  }, []);
+  }, [stored]);
 
   const result = useMemo(() => {
     if (!answers) return null;

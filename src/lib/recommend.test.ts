@@ -8,7 +8,7 @@ const baseAnswers = {
   language_preference: 'no_preference',
   automation_focus: 'unsure',
   target_scope: 'unsure',
-  no_state_files: 'no',
+  state_backend_responsibility: 'self_managed',
   managed_state: 'unsure'
 };
 
@@ -48,7 +48,7 @@ describe('recommend', () => {
   it('weights state-backend preference without excluding tools', () => {
     const result = recommend({
       ...baseAnswers,
-      no_state_files: 'yes'
+      state_backend_responsibility: 'tool_managed'
     });
 
     const scores = new Map(result.ranked.map((item) => [item.toolId, item.score]));

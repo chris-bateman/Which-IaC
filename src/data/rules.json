@@ -164,8 +164,8 @@
     },
     {
       "id": "w-avoid-state-backend",
-      "questionId": "no_state_files",
-      "match": { "equals": "yes" },
+      "questionId": "state_backend_responsibility",
+      "match": { "equals": "tool_managed" },
       "weights": {
         "aws-cdk": 3,
         "aws-cloudformation": 3,
@@ -178,7 +178,7 @@
         "puppet": 0,
         "chef": 0
       },
-      "message": "Prefers tools that avoid operating a separate state backend."
+      "message": "Prefers tools that manage state for you."
     },
     {
       "id": "w-managed-state",

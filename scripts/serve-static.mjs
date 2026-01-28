@@ -4,7 +4,7 @@ import { createReadStream } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 
 const port = Number(process.env.PORT ?? 3000);
-const basePath = process.env.BASE_PATH ?? '/Which-IaC';
+const basePath = process.env.BASE_PATH ?? '/';
 const root = process.env.STATIC_ROOT ?? 'out';
 
 const contentTypes = {

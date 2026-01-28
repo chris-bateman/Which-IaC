@@ -46,13 +46,13 @@
     ]
   },
   {
-    "id": "no_state_files",
-    "prompt": "Do you want to avoid operating a separate state backend?",
-    "helpText": "Some tools store state in an external backend you operate. Others manage state within a service or engine so you don’t run the backend yourself.",
+    "id": "state_backend_responsibility",
+    "prompt": "Who should be responsible for managing infrastructure state?",
+    "helpText": "Some tools require you to run and maintain a state backend yourself. Others manage state internally as part of the deployment engine.",
     "type": "single",
     "options": [
-      { "value": "yes", "label": "Yes, avoid operating a separate state backend" },
-      { "value": "no", "label": "No, operating a state backend is fine" },
+      { "value": "tool_managed", "label": "The tool should manage state for me" },
+      { "value": "self_managed", "label": "I’m fine managing a state backend myself" },
       { "value": "unsure", "label": "Not sure" }
     ]
   },

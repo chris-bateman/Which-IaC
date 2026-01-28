@@ -13,7 +13,7 @@ test('cloudformation-required narrows results and shows reasons', async ({ page 
   await answerAndNext(page, 'General-purpose programming languages');
   await answerAndNext(page, 'Provisioning and managing cloud infrastructure');
   await answerAndNext(page, 'AWS-native integration');
-  await answerAndNext(page, 'Yes, avoid operating a separate state backend');
+  await answerAndNext(page, 'The tool should manage state for me');
   await answerAndNext(page, 'Yes, prefer a managed state service', true);
 
   await expect(page.getByRole('heading', { name: 'Recommended tools' })).toBeVisible();

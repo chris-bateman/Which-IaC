@@ -1,6 +1,6 @@
 import { defineConfig } from '@playwright/test';
 
-const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:4173/Which-IaC/';
+const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:4173/';
 
 export default defineConfig({
   testDir: './tests',
@@ -12,7 +12,7 @@ export default defineConfig({
     trace: 'retain-on-failure'
   },
   webServer: {
-    command: 'npm run build && PORT=4173 BASE_PATH=/Which-IaC node scripts/serve-static.mjs',
+    command: 'npm run build && PORT=4173 node scripts/serve-static.mjs',
     url: baseURL,
     reuseExistingServer: !process.env.CI
   }
