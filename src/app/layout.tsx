@@ -7,6 +7,16 @@ export const metadata: Metadata = {
   description: 'Compare infrastructure as code tools with transparent, auditable rules.'
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Which IaC',
+  url: 'https://whichiac.com',
+  description: 'Compare infrastructure as code tools with transparent, auditable rules.'
+};
+
+const jsonLdString = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+
 export default function RootLayout({
   children
 }: {
@@ -15,6 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString }}
+        />
         <div className="page">
           <header className="site-header">
             <div className="brand">
