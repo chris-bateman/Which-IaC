@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Test
         run: npm run test
 
@@ -31,6 +34,5 @@ jobs:
 
       - name: E2E tests
         env:
-          PLAYWRIGHT_BASE_URL: http://localhost:4173/Which-IaC/
-          BASE_PATH: /Which-IaC
+          PLAYWRIGHT_BASE_URL: http://localhost:4173/
         run: npm run test:e2e
