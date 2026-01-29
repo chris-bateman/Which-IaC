@@ -36,10 +36,10 @@ export default function ResultPage() {
   if (!answers || !result) {
     return (
       <section className="results">
-        <h1>No answers found</h1>
-        <p>Start the questionnaire to receive a ranked list and explanations.</p>
+        <h1>No stored answers</h1>
+        <p>Complete the questionnaire to generate a ranked list and explanations.</p>
         <Link className="primary" href="/quiz">
-          Start quiz
+          Open questionnaire
         </Link>
       </section>
     );
@@ -48,14 +48,15 @@ export default function ResultPage() {
   return (
     <section className="results">
       <div className="results-header">
-        <h1>Recommended tools</h1>
+        <h1>Ranked results</h1>
         <p>
-          Based on your answers, we drop anything that doesn’t meet your must-haves,
-          then order what’s left by how well it fits.
+          Based on your answers, tools that violate constraints are removed, then the
+          remaining set is ordered by weighted fit.
         </p>
+        <p>This output is a decision aid, not a global ranking.</p>
         <div className="actions">
           <Link className="secondary" href="/compare/">
-            Compare all
+            View comparison table
           </Link>
         </div>
       </div>
@@ -67,7 +68,7 @@ export default function ResultPage() {
           const reasonText =
             reasons.length > 0
               ? reasons.join(' ')
-              : 'Your answers didn’t strongly favor or exclude this tool.';
+              : 'No strong signals in your answers for this tool.';
           const factsText = tool
             ? `Focus: ${tool.focus}. Definition model: ${tool.definitionModel}. State model: ${tool.stateModel}. Targets: ${tool.primaryTargets.join(
                 ', '
@@ -87,16 +88,16 @@ export default function ResultPage() {
                 </div>
               </header>
 
-                <div className="fit-box">
-                  <div>
-                    <h3>Why it matches</h3>
-                    <p>{reasonText}</p>
-                  </div>
-                  <div>
-                    <h3>Things to know</h3>
-                    <p>{factsText}</p>
-                  </div>
+              <div className="fit-box">
+                <div>
+                  <h3>Fit signals</h3>
+                  <p>{reasonText}</p>
                 </div>
+                <div>
+                  <h3>Tool context</h3>
+                  <p>{factsText}</p>
+                </div>
+              </div>
 
               {tool?.officialDocs?.length ? (
                 <div className="tool-links">
@@ -119,7 +120,7 @@ export default function ResultPage() {
       </div>
 
       <section className="answer-recap">
-        <h2>Your answers</h2>
+        <h2>Your inputs</h2>
         <div className="recap-grid">
           {questions.map((question) => {
             const selected = answers[question.id];
@@ -139,7 +140,7 @@ export default function ResultPage() {
       <section className="excluded">
         <h2>Excluded tools</h2>
         {result.excluded.length === 0 ? (
-          <p>No tools were excluded by hard requirements.</p>
+          <p>No tools were excluded by hard constraints.</p>
         ) : (
           <div className="excluded-grid">
             {result.excluded.map((item) => {

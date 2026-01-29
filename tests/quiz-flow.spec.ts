@@ -10,10 +10,10 @@ test('quiz flow completes and shows results', async ({ page }) => {
     await firstOption.check();
 
     const isLast = index === questions.length - 1;
-    const buttonName = isLast ? 'See results' : 'Next';
+    const buttonName = isLast ? 'View results' : 'Next';
     await page.getByRole('button', { name: buttonName }).click();
   }
 
-  await expect(page.getByRole('heading', { name: 'Recommended tools' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Your answers' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ranked results' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Your inputs' })).toBeVisible();
 });

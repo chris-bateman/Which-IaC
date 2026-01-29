@@ -38,9 +38,12 @@ export default function QuizPage() {
   return (
     <section className="quiz">
       <div className="quiz-header">
-        <h1>Infrastructure and automation questionnaire</h1>
+        <h1>IaC tooling questionnaire</h1>
         <p>
-          A quick set of questions to surface what matters most for your setup.
+          {total} questions, typically 2-3 minutes, with explainable results.
+        </p>
+        <p>
+          This is a questionnaire-based decision aid, not a global ranking.
         </p>
       </div>
 
@@ -72,7 +75,7 @@ export default function QuizPage() {
             Back
           </button>
           <button type="button" className="primary" onClick={onNext} disabled={!selected}>
-            {step === total - 1 ? 'See results' : 'Next'}
+            {step === total - 1 ? 'View results' : 'Next'}
           </button>
         </div>
       </div>

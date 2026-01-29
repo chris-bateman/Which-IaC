@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 
 async function answerAndNext(page: Page, label: string, isLast = false) {
   await page.getByRole('radio', { name: label }).check();
-  const buttonName = isLast ? 'See results' : 'Next';
+  const buttonName = isLast ? 'View results' : 'Next';
   await page.getByRole('button', { name: buttonName }).click();
 }
 
@@ -16,7 +16,7 @@ test('cloudformation-required narrows results and shows reasons', async ({ page 
   await answerAndNext(page, 'The tool should manage state for me');
   await answerAndNext(page, 'Yes, prefer a managed state service', true);
 
-  await expect(page.getByRole('heading', { name: 'Recommended tools' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ranked results' })).toBeVisible();
 
   // Only CloudFormation/CDK should remain when CloudFormation is required.
   await expect(page.getByRole('heading', { name: 'AWS CDK' })).toBeVisible();

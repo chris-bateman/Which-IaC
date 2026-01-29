@@ -22,6 +22,7 @@ export default async function ToolPage({
       <header>
         <h1>{tool.name}</h1>
         <p>{tool.summary}</p>
+        <p>This page is a reference entry, not a ranking.</p>
       </header>
 
       <div className="tool-grid">
@@ -51,6 +52,10 @@ export default async function ToolPage({
             <div>
               <dt>Execution model</dt>
               <dd>{tool.executionModel}</dd>
+            </div>
+            <div>
+              <dt>License</dt>
+              <dd>{tool.license}</dd>
             </div>
           </dl>
         </div>

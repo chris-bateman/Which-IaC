@@ -5,38 +5,83 @@ import rules from '../data/rules.json';
 
 export default function HomePage() {
   return (
-    <section className="hero">
-      <div className="hero-text">
-        <h1>Find the tool that suits your needs.</h1>
-        <p>
-          Compare tools for infrastructure, configuration, and platform automation using
-          official documentation and clear rules.
-        </p>
-        <div className="actions">
+    <section className="home">
+      <div className="hero">
+        <div className="hero-text">
+          <h1>A structured way to evaluate IaC tools</h1>
+          <p>
+            Uses documented facts and a rules-based questionnaire to compare infrastructure,
+            configuration, and orchestration tools.
+          </p>
+        </div>
+        <div className="hero-actions">
           <Link className="primary" href="/quiz/">
-            Start quiz
+            Answer the questionnaire
           </Link>
+          <Link className="secondary desktop-only" href="/compare/">
+            View the comparison table
+          </Link>
+        </div>
+          <p className="hero-note">
+            {questions.length} questions, about 2-3 minutes, with results you can inspect.
+          </p>
+        <div className="hero-card">
+          <Link className="hero-metric" href="/compare/">
+            <div className="label">Tools</div>
+            <div className="value">{tools.length}</div>
+            <span className="metric-link">Review list</span>
+          </Link>
+          <Link className="hero-metric" href="/about/#questions">
+            <div className="label">Questions</div>
+            <div className="value">{questions.length}</div>
+            <span className="metric-link">Review prompts</span>
+          </Link>
+          <Link className="hero-metric" href="/about/#rules">
+            <div className="label">Rules</div>
+            <div className="value">{rules.mustHave.length + rules.weights.length}</div>
+            <span className="metric-link">Inspect scoring</span>
+          </Link>
+        </div>
+        <div className="hero-secondary mobile-only">
           <Link className="secondary" href="/compare/">
-            Compare tools
+            View the comparison table
           </Link>
         </div>
       </div>
-      <div className="hero-card">
-        <Link className="hero-metric" href="/compare/">
-          <div className="label">Tools</div>
-          <div className="value">{tools.length}</div>
-          <span className="metric-link">View list</span>
-        </Link>
-        <Link className="hero-metric" href="/about/#questions">
-          <div className="label">Questions</div>
-          <div className="value">{questions.length}</div>
-          <span className="metric-link">See the quiz</span>
-        </Link>
-        <Link className="hero-metric" href="/about/#rules">
-          <div className="label">Rules</div>
-          <div className="value">{rules.mustHave.length + rules.weights.length}</div>
-          <span className="metric-link">How ranking works</span>
-        </Link>
+
+      <div className="home-blocks">
+        <div className="home-card">
+          <h2>What this does</h2>
+          <ul>
+            <li>Shows how tools define, deploy, and track infrastructure.</li>
+            <li>Filters options using constraints and weighted preferences.</li>
+            <li>Shows which rules fired and why each result appears.</li>
+          </ul>
+        </div>
+        <div className="home-card">
+          <h2>What this does not do</h2>
+          <ul>
+            <li>It is not a global ranking or a substitute for due diligence.</li>
+            <li>It does not assess maturity, cost, or org-specific requirements.</li>
+            <li>It does not recommend deployment choices.</li>
+          </ul>
+        </div>
+        <div className="home-card">
+          <h2>Methodology</h2>
+          <p>The goal is transparency, not persuasion.</p>
+          <ul>
+            <li>Tool facts come from official documentation where available.</li>
+            <li>Scoring rules are public, and you can inspect them.</li>
+          </ul>
+          <a
+            className="text-link"
+            href="https://github.com/chris-bateman/Which-IaC"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View source and scoring rules
+          </a>
+        </div>
       </div>
     </section>
   );

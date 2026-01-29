@@ -9,11 +9,11 @@ export default function AboutPage() {
       <div className="about-header">
         <h1>How this works</h1>
         <p>
-          This site uses tool facts, a short questionnaire, and transparent rules to help
-          compare options. Everything below is drawn from the JSON data files.
+          This page documents the data, questions, and rules used by the decision model.
+          It is a reference, not a global ranking.
         </p>
         <p>
-          Want the details? See the{' '}
+          For data and contribution details, see the{' '}
           <a href="https://github.com/chris-bateman/Which-IaC/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">
             contributing guide
           </a>
@@ -24,15 +24,15 @@ export default function AboutPage() {
       <section id="tools" className="about-section">
         <header>
           <h2>Tools ({tools.length})</h2>
-          <p>Browse the full comparison table with official references.</p>
+          <p>Inspect the comparison table with source references.</p>
         </header>
         <div className="about-callout">
           <p>
-            See all tools side by side, including focus area, definition model, supported
+            Review tool facts side by side, including focus area, definition model, supported
             languages, and state model.
           </p>
           <Link className="primary" href="/compare/">
-            Go to compare table
+            Open comparison table
           </Link>
         </div>
       </section>
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <section id="questions" className="about-section">
         <header>
           <h2>Questions ({questions.length})</h2>
-          <p>The quiz uses these prompts and options.</p>
+          <p>The questionnaire uses these prompts and options.</p>
         </header>
         <div className="about-stack">
           {questions.map((question, index) => (
@@ -65,13 +65,13 @@ export default function AboutPage() {
       <section id="rules" className="about-section">
         <header>
           <h2>Rules ({rules.mustHave.length + rules.weights.length})</h2>
-          <p>Rules first exclude tools, then apply weights to rank the rest.</p>
+          <p>Rules exclude tools that violate constraints, then apply weights to rank the rest.</p>
         </header>
         <div className="rules-layout">
           <section className="rules-card">
             <header>
-              <h3>Must-have exclusions</h3>
-              <p>These rules remove tools that don’t meet a required condition.</p>
+              <h3>Hard constraints</h3>
+              <p>These rules remove tools that fail a required condition.</p>
             </header>
             <div className="rules-list">
               {rules.mustHave.map((rule) => (
@@ -87,8 +87,8 @@ export default function AboutPage() {
           </section>
           <section className="rules-card">
             <header>
-              <h3>Weighted preferences</h3>
-              <p>These rules add weight based on your preferences.</p>
+              <h3>Preference weights</h3>
+              <p>These rules add weight based on selected preferences.</p>
             </header>
             <div className="rules-list">
               {rules.weights.map((rule) => (

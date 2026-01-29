@@ -10,7 +10,8 @@ type SortKey =
   | 'definitionModel'
   | 'primaryTargets'
   | 'supportedLanguages'
-  | 'stateModel';
+  | 'stateModel'
+  | 'license';
 
 type SortState = { key: SortKey; direction: 'asc' | 'desc' };
 
@@ -28,12 +29,16 @@ export default function ComparePage() {
           ? a.primaryTargets.join(', ')
           : sort.key === 'supportedLanguages'
             ? a.supportedLanguages.join(', ')
+            : sort.key === 'license'
+              ? a.license
             : String(a[sort.key]);
       const valueB =
         sort.key === 'primaryTargets'
           ? b.primaryTargets.join(', ')
           : sort.key === 'supportedLanguages'
             ? b.supportedLanguages.join(', ')
+            : sort.key === 'license'
+              ? b.license
             : String(b[sort.key]);
       const comparison = valueA.localeCompare(valueB);
       return sort.direction === 'asc' ? comparison : -comparison;
@@ -56,8 +61,9 @@ export default function ComparePage() {
   return (
     <section className="compare">
       <div className="compare-header">
-        <h1>Compare tools</h1>
-        <p>Side-by-side facts pulled from official documentation.</p>
+        <h1>Comparison table</h1>
+        <p>Side-by-side facts from official documentation where available.</p>
+        <p>This table is a selection aid; it does not provide a global ranking.</p>
       </div>
 
       <div className="table-wrapper" role="region" aria-label="IaC tools comparison">
@@ -154,6 +160,19 @@ export default function ComparePage() {
                   </span>
                 </button>
               </th>
+              <th scope="col">
+                <button
+                  type="button"
+                  className="sort-button"
+                  onClick={() => toggleSort('license')}
+                  aria-label={`Sort by license. ${sortLabel('license')}`}
+                >
+                  License
+                  <span className="sort-indicator">
+                    {sort.key === 'license' ? (sort.direction === 'asc' ? '↑' : '↓') : ''}
+                  </span>
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -167,6 +186,7 @@ export default function ComparePage() {
                 <td>{tool.primaryTargets.join(', ')}</td>
                 <td>{tool.supportedLanguages.join(', ')}</td>
                 <td>{tool.stateModel}</td>
+                <td>{tool.license}</td>
               </tr>
             ))}
           </tbody>

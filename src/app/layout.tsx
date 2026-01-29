@@ -5,16 +5,16 @@ import AnalyticsConsent from './components/AnalyticsConsent';
 import ThemeToggle from './components/ThemeToggle';
 
 export const metadata: Metadata = {
-  title: 'Which IaC',
-  description: 'Compare infrastructure as code tools with transparent, auditable rules.'
+  title: 'Which IaC (beta)',
+  description: 'Technical decision aid for IaC tools with inspectable rules and documented inputs.'
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Which IaC',
+  name: 'Which IaC (beta)',
   url: 'https://whichiac.com',
-  description: 'Compare infrastructure as code tools with transparent, auditable rules.'
+  description: 'Technical decision aid for IaC tools with inspectable rules and documented inputs.'
 };
 
 const jsonLdString = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
@@ -45,8 +45,8 @@ export default function RootLayout({
         <div className="page">
           <header className="site-header">
             <div className="brand">
-              <Link href="/">Which IaC</Link>
-              <span className="tagline">Tools that fit your needs</span>
+              <Link href="/">Which IaC (beta)</Link>
+              <span className="tagline">Decision aid for IaC tooling</span>
             </div>
             <div className="header-actions">
               <nav aria-label="Primary">
@@ -68,7 +68,7 @@ export default function RootLayout({
           <footer className="site-footer">
             <div className="footer-content">
               <a href="https://github.com/chris-bateman/Which-IaC" target="_blank" rel="noreferrer">
-                View the project on GitHub
+                View source and scoring rules
               </a>
               <AnalyticsConsent />
             </div>

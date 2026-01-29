@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { resolveThemeChoice, type ThemeChoice } from '../../lib/theme';
+import { useSyncExternalStore } from 'react';
+import type { ThemeChoice } from '../../lib/theme';
+import { getThemeSnapshot, setThemeSnapshot, subscribeTheme } from '../../lib/themeStore';
 
 const storageKey = 'theme';
 
@@ -11,21 +12,12 @@ const applyTheme = (theme: ThemeChoice) => {
 };
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<ThemeChoice>('light');
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(storageKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = resolveThemeChoice(stored, prefersDark);
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
+  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => 'light');
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
     window.localStorage.setItem(storageKey, next);
-    applyTheme(next);
+    setThemeSnapshot(next);
   };
 
   const isDark = theme === 'dark';

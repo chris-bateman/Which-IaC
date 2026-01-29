@@ -1,30 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import Script from 'next/script';
-import { clearConsent, readConsent, writeConsent, type ConsentState } from '../../lib/consent';
+import type { ConsentState } from '../../lib/consent';
+import {
+  clearConsentSnapshot,
+  getConsentSnapshot,
+  setConsentSnapshot,
+  subscribeConsent
+} from '../../lib/consentStore';
 const GA_ID = 'G-XH11MVCS63';
 
 export default function AnalyticsConsent() {
-  const [consent, setConsent] = useState<ConsentState>('unset');
-
-  useEffect(() => {
-    setConsent(readConsent(localStorage));
-  }, []);
+  const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, () => 'unset');
 
   const accept = () => {
-    writeConsent(localStorage, 'granted');
-    setConsent('granted');
+    setConsentSnapshot('granted');
   };
 
   const decline = () => {
-    writeConsent(localStorage, 'denied');
-    setConsent('denied');
+    setConsentSnapshot('denied');
   };
 
   const manage = () => {
-    clearConsent(localStorage);
-    setConsent('unset');
+    clearConsentSnapshot();
   };
 
   return (

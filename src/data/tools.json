@@ -4,9 +4,18 @@
     "name": "AWS CDK",
     "summary": "Defines AWS infrastructure in code and synthesizes to AWS CloudFormation templates.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["AWS"],
+    "primaryTargets": [
+      "AWS"
+    ],
     "definitionModel": "General-purpose programming languages",
-    "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Java", "C#", "Go"],
+    "supportedLanguages": [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Java",
+      "C#",
+      "Go"
+    ],
     "stateModel": "CloudFormation-managed (stack state)",
     "executionModel": "CDK CLI synthesizes and deploys via CloudFormation",
     "officialDocs": [
@@ -22,16 +31,27 @@
         "label": "AWS CDK GitHub",
         "url": "https://github.com/aws/aws-cdk"
       }
-    ]
+    ],
+    "license": "Apache-2.0"
   },
   {
     "id": "pulumi",
     "name": "Pulumi",
     "summary": "Defines infrastructure using general-purpose programming languages and a unified CLI/workflow.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["Multi-cloud"],
+    "primaryTargets": [
+      "Multi-cloud"
+    ],
     "definitionModel": "General-purpose programming languages (and YAML)",
-    "supportedLanguages": ["TypeScript", "JavaScript", "Python", "Go", ".NET", "Java", "YAML"],
+    "supportedLanguages": [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Go",
+      ".NET",
+      "Java",
+      "YAML"
+    ],
     "stateModel": "Pulumi state backend (managed or self-managed)",
     "executionModel": "Pulumi CLI with local or hosted backends",
     "officialDocs": [
@@ -47,16 +67,21 @@
         "label": "Pulumi GitHub",
         "url": "https://github.com/pulumi/pulumi"
       }
-    ]
+    ],
+    "license": "Apache-2.0"
   },
   {
     "id": "terraform",
     "name": "Terraform",
     "summary": "Declarative configuration language (HCL) to provision and manage infrastructure via providers.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["Multi-cloud"],
+    "primaryTargets": [
+      "Multi-cloud"
+    ],
     "definitionModel": "Declarative configuration language (HCL)",
-    "supportedLanguages": ["HCL"],
+    "supportedLanguages": [
+      "HCL"
+    ],
     "stateModel": "Terraform state backend (local or remote)",
     "executionModel": "Terraform CLI with provider plugins",
     "officialDocs": [
@@ -72,16 +97,21 @@
         "label": "Terraform GitHub",
         "url": "https://github.com/hashicorp/terraform"
       }
-    ]
+    ],
+    "license": "Business Source License 1.1"
   },
   {
     "id": "opentofu",
     "name": "OpenTofu",
     "summary": "Open-source infrastructure as code tool using OpenTofu configurations.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["Multi-cloud"],
+    "primaryTargets": [
+      "Multi-cloud"
+    ],
     "definitionModel": "Declarative configuration (OpenTofu language)",
-    "supportedLanguages": ["OpenTofu language"],
+    "supportedLanguages": [
+      "OpenTofu language"
+    ],
     "stateModel": "OpenTofu state backend (local or remote)",
     "executionModel": "OpenTofu CLI",
     "officialDocs": [
@@ -109,16 +139,22 @@
         "label": "OpenTofu GitHub",
         "url": "https://github.com/opentofu/opentofu"
       }
-    ]
+    ],
+    "license": "MPL-2.0"
   },
   {
     "id": "aws-cloudformation",
     "name": "AWS CloudFormation",
     "summary": "AWS service that uses templates to provision and manage stacks.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["AWS"],
+    "primaryTargets": [
+      "AWS"
+    ],
     "definitionModel": "Declarative templates",
-    "supportedLanguages": ["YAML", "JSON"],
+    "supportedLanguages": [
+      "YAML",
+      "JSON"
+    ],
     "stateModel": "Service-managed (stack state)",
     "executionModel": "CloudFormation service manages stacks",
     "officialDocs": [
@@ -130,16 +166,21 @@
         "label": "CloudFormation Template Formats",
         "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html"
       }
-    ]
+    ],
+    "license": "AWS Service Terms (proprietary)"
   },
   {
     "id": "formae",
     "name": "formae",
     "summary": "Code-based IaC platform that models infrastructure as code without separate state files.",
     "focus": "Infrastructure provisioning",
-    "primaryTargets": ["Not stated in official docs"],
+    "primaryTargets": [
+      "Not stated in official docs"
+    ],
     "definitionModel": "Declarative code (Pkl)",
-    "supportedLanguages": ["Pkl"],
+    "supportedLanguages": [
+      "Pkl"
+    ],
     "stateModel": "No separate state backend",
     "executionModel": "formae CLI applies and extracts formae",
     "officialDocs": [
@@ -151,16 +192,21 @@
         "label": "formae GitHub",
         "url": "https://github.com/platform-engineering-labs/formae"
       }
-    ]
+    ],
+    "license": "FSL-1.1-ALv2"
   },
   {
     "id": "ansible",
     "name": "Ansible",
     "summary": "Automation and configuration management using YAML playbooks.",
     "focus": "Configuration management",
-    "primaryTargets": ["Not stated in official docs"],
+    "primaryTargets": [
+      "Managed nodes (servers)"
+    ],
     "definitionModel": "Declarative YAML playbooks",
-    "supportedLanguages": ["YAML"],
+    "supportedLanguages": [
+      "YAML"
+    ],
     "stateModel": "No separate state backend",
     "executionModel": "ansible-playbook runs playbooks in order",
     "officialDocs": [
@@ -176,16 +222,21 @@
         "label": "Ansible GitHub",
         "url": "https://github.com/ansible/ansible"
       }
-    ]
+    ],
+    "license": "GPL-3.0"
   },
   {
     "id": "puppet",
     "name": "Puppet",
     "summary": "Declarative language to describe desired system state and apply it to nodes.",
     "focus": "Configuration management",
-    "primaryTargets": ["Not stated in official docs"],
+    "primaryTargets": [
+      "Not stated in official docs"
+    ],
     "definitionModel": "Declarative Puppet language",
-    "supportedLanguages": ["Puppet DSL"],
+    "supportedLanguages": [
+      "Puppet DSL"
+    ],
     "stateModel": "No separate state backend",
     "executionModel": "Manifests compile into catalogs applied to nodes",
     "officialDocs": [
@@ -197,16 +248,21 @@
         "label": "Puppet GitHub",
         "url": "https://github.com/puppetlabs/puppet"
       }
-    ]
+    ],
+    "license": "Apache-2.0"
   },
   {
     "id": "chef",
     "name": "Chef Infra",
     "summary": "Configuration management with Chef Infra Client to bring nodes to desired state.",
     "focus": "Configuration management",
-    "primaryTargets": ["Not stated in official docs"],
+    "primaryTargets": [
+      "Not stated in official docs"
+    ],
     "definitionModel": "Chef Infra resources and recipes",
-    "supportedLanguages": ["Ruby DSL"],
+    "supportedLanguages": [
+      "Ruby DSL"
+    ],
     "stateModel": "No separate state backend",
     "executionModel": "Chef Infra Client applies recipes to converge nodes",
     "officialDocs": [
@@ -218,16 +274,21 @@
         "label": "Chef Documentation",
         "url": "https://docs.chef.io/"
       }
-    ]
+    ],
+    "license": "Apache-2.0"
   },
   {
     "id": "crossplane",
     "name": "Crossplane",
     "summary": "Cloud-native control plane framework built on Kubernetes.",
     "focus": "Control plane and orchestration",
-    "primaryTargets": ["Kubernetes-based control planes"],
+    "primaryTargets": [
+      "Kubernetes-based control planes"
+    ],
     "definitionModel": "Kubernetes custom resources (declarative APIs)",
-    "supportedLanguages": ["Kubernetes YAML"],
+    "supportedLanguages": [
+      "Kubernetes YAML"
+    ],
     "stateModel": "Kubernetes API state",
     "executionModel": "Controllers reconcile managed resources",
     "officialDocs": [
@@ -243,6 +304,7 @@
         "label": "Crossplane GitHub",
         "url": "https://github.com/crossplane/crossplane"
       }
-    ]
+    ],
+    "license": "Apache-2.0"
   }
 ]
