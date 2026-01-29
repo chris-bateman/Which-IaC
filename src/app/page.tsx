@@ -53,25 +53,25 @@ export default function HomePage() {
         <div className="home-card">
           <h2>What this does</h2>
           <ul>
-            <li>Shows how tools define, deploy, and track infrastructure.</li>
-            <li>Filters options using constraints and weighted preferences.</li>
-            <li>Shows which rules fired and why each result appears.</li>
+            <li>Shows how different tools define, deploy, and keep track of infrastructure.</li>
+            <li>Narrows the field using explicit constraints and weighted preferences.</li>
+            <li>Explains which rules were applied and how each result was derived.</li>
           </ul>
         </div>
         <div className="home-card">
           <h2>What this does not do</h2>
           <ul>
             <li>It is not a global ranking or a substitute for due diligence.</li>
-            <li>It does not assess maturity, cost, or org-specific requirements.</li>
-            <li>It does not recommend deployment choices.</li>
+            <li>It does not assess maturity, cost, or organisation-specific requirements.</li>
+            <li>It does not recommend specific deployment choices.</li>
           </ul>
         </div>
         <div className="home-card">
           <h2>Methodology</h2>
           <p>The goal is transparency, not persuasion.</p>
           <ul>
-            <li>Tool facts come from official documentation where available.</li>
-            <li>Scoring rules are public, and you can inspect them.</li>
+            <li>Tool facts are sourced from official documentation where available.</li>
+            <li>Scoring rules are public and can be inspected.</li>
           </ul>
           <a
             className="text-link"

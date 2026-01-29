@@ -2,6 +2,16 @@
 
 A site that helps users choose between infrastructure and automation tools using auditable data and rules.
 
+## What This Site Is For
+Which IaC helps engineering teams select infrastructure-as-code and automation tools using transparent, auditable criteria.
+
+- Answer a short questionnaire about your targets and requirements.
+- See a comparison table with neutral, sourced facts from official documentation.
+- Get recommendations that first apply hard exclusions, then weighted preferences.
+- Explore per-tool pages with concise summaries and primary references.
+
+The project intentionally avoids subjective claims. All facts are based on official sources and rules are explicit and easy to audit.
+
 ## Features
 - Static export ready for GitHub Pages
 - Data-driven questionnaire and comparison views
@@ -147,5 +157,8 @@ Open the URL printed by `serve`.
 
 ## Contributing
 See `CONTRIBUTING.md` for fact sourcing, rule changes, language guidelines, and the PR checklist.
+
+## AI Disclosure
+Some parts of this repository may have been generated with the assistance of AI. All AI-generated contributions are reviewed and verified by human maintainers to ensure accuracy, neutrality, and compliance with project guidelines.
 
  

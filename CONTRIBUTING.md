@@ -50,3 +50,8 @@ After adding a tool, ensure it appears in at least one rule (test will fail if i
 - Run `npm run test` before submitting changes.
 - Run `npm run test:e2e` when updating quiz flow, compare table, or result logic.
 - If you ran Playwright locally, include a link or screenshot from `playwright-report/` in the PR.
+
+## Setup and Build
+- For local setup and scripts, see Quick Start in [README.md](README.md).
+- For static export and local preview steps, see the Static export section in [README.md](README.md).
+- For deployment expectations and workflow, see GitHub Pages deployment in [README.md](README.md).
