@@ -16,7 +16,7 @@
       "C#",
       "Go"
     ],
-    "stateModel": "CloudFormation-managed (stack state)",
+    "stateModel": "Service-managed (CloudFormation stack state)",
     "executionModel": "CDK CLI synthesizes and deploys via CloudFormation",
     "officialDocs": [
       {
@@ -42,7 +42,7 @@
     "primaryTargets": [
       "Multi-cloud"
     ],
-    "definitionModel": "General-purpose programming languages (and YAML)",
+    "definitionModel": "General-purpose programming languages (optional YAML)",
     "supportedLanguages": [
       "TypeScript",
       "JavaScript",
@@ -110,7 +110,7 @@
     ],
     "definitionModel": "Declarative configuration (OpenTofu language)",
     "supportedLanguages": [
-      "OpenTofu language"
+      "Terraform/OpenTofu language (HCL)"
     ],
     "stateModel": "OpenTofu state backend (local or remote)",
     "executionModel": "OpenTofu CLI",
@@ -155,7 +155,7 @@
       "YAML",
       "JSON"
     ],
-    "stateModel": "Service-managed (stack state)",
+    "stateModel": "Service-managed (CloudFormation stack state)",
     "executionModel": "CloudFormation service manages stacks",
     "officialDocs": [
       {
@@ -259,7 +259,7 @@
     "primaryTargets": [
       "Not stated in official docs"
     ],
-    "definitionModel": "Chef Infra resources and recipes",
+    "definitionModel": "Desired-state configuration (Ruby DSL: resources and recipes)",
     "supportedLanguages": [
       "Ruby DSL"
     ],

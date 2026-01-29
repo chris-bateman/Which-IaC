@@ -7,6 +7,7 @@ const baseAnswers = {
   cloudformation_required: 'no',
   language_preference: 'no_preference',
   automation_focus: 'unsure',
+  control_plane_opt_in: 'unsure',
   target_scope: 'unsure',
   state_backend_responsibility: 'self_managed',
   managed_state: 'unsure'
@@ -43,6 +44,28 @@ describe('recommend', () => {
       'aws-cdk',
       'aws-cloudformation'
     ]);
+  });
+
+  it('excludes crossplane when control-plane opt-in is no', () => {
+    const result = recommend({
+      ...baseAnswers,
+      control_plane_opt_in: 'no'
+    });
+
+    const excludedIds = result.excluded.map((item) => item.toolId);
+    expect(excludedIds).toContain('crossplane');
+  });
+
+  it('excludes non-code-first tools when code-first is required', () => {
+    const result = recommend({
+      ...baseAnswers,
+      language_preference: 'general_purpose'
+    });
+
+    const excludedIds = result.excluded.map((item) => item.toolId);
+    expect(excludedIds).toContain('terraform');
+    expect(excludedIds).toContain('opentofu');
+    expect(excludedIds).toContain('aws-cloudformation');
   });
 
   it('weights state-backend preference without excluding tools', () => {
@@ -95,6 +118,17 @@ describe('recommend', () => {
     expect(terraform?.firedRules[0]).toHaveProperty('ruleId');
     expect(terraform?.firedRules[0]).toHaveProperty('weight');
     expect(terraform?.firedRules[0]).toHaveProperty('message');
+  });
+
+  it('supports negative weights and scores', () => {
+    const result = recommend({
+      ...baseAnswers,
+      language_preference: 'declarative'
+    });
+
+    const cdk = result.ranked.find((item) => item.toolId === 'aws-cdk');
+    expect(cdk?.score).toBeLessThan(0);
+    expect(cdk?.firedRules.some((rule) => rule.weight < 0)).toBe(true);
   });
 
   it('includes explicit exclusion reasons', () => {

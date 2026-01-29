@@ -69,8 +69,8 @@ export const recommend = (answers: AnswerMap): RecommendationResult => {
     for (const rule of weightRules) {
       const answer = answers[rule.questionId];
       if (!matchesRule(answer, rule.match)) continue;
-      const weight = rule.weights[tool.id] ?? 0;
-      if (weight === 0) continue;
+      const weight = Number(rule.weights[tool.id] ?? 0);
+      if (Number.isNaN(weight) || weight === 0) continue;
       score += weight;
       firedRules.push({ ruleId: rule.id, weight, message: rule.message });
     }

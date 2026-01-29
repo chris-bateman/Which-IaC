@@ -15,9 +15,50 @@
         "crossplane"
       ],
       "reason": "Requires AWS CloudFormation as the deployment engine."
+    },
+    {
+      "id": "mh-code-first-required",
+      "questionId": "language_preference",
+      "match": { "equals": "general_purpose" },
+      "excludes": [
+        "terraform",
+        "opentofu",
+        "aws-cloudformation",
+        "crossplane",
+        "ansible",
+        "puppet",
+        "chef",
+        "formae"
+      ],
+      "reason": "Requires infrastructure to be authored in a mainstream general-purpose programming language (e.g., Python or TypeScript)."
+    },
+    {
+      "id": "mh-no-control-plane",
+      "questionId": "control_plane_opt_in",
+      "match": { "equals": "no" },
+      "excludes": ["crossplane"],
+      "reason": "User does not want a control-plane operating model (reconciliation-based platform)."
     }
   ],
   "weights": [
+    {
+      "id": "w-control-plane-opt-in",
+      "questionId": "control_plane_opt_in",
+      "match": { "equals": "yes" },
+      "weights": {
+        "aws-cdk": 0,
+        "pulumi": 0,
+        "terraform": 0,
+        "opentofu": 0,
+        "aws-cloudformation": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 1
+      },
+      "message": "Explicitly opts into a control-plane (reconciliation) operating model."
+    },
     {
       "id": "w-general-purpose",
       "questionId": "language_preference",
@@ -27,8 +68,8 @@
         "pulumi": 3,
         "terraform": 0,
         "opentofu": 0,
-        "aws-cloudformation": 0,
-        "formae": 0,
+        "aws-cloudformation": -2,
+        "formae": 2,
         "ansible": 0,
         "puppet": 0,
         "chef": 0,
@@ -44,13 +85,13 @@
         "terraform": 3,
         "opentofu": 3,
         "aws-cloudformation": 3,
-        "pulumi": 1,
+        "pulumi": -1,
         "formae": 2,
         "ansible": 2,
         "puppet": 2,
         "chef": 1,
         "crossplane": 3,
-        "aws-cdk": 0
+        "aws-cdk": -3
       },
       "message": "Prefers declarative configuration and templates."
     },
@@ -96,9 +137,9 @@
       "match": { "equals": "control_plane" },
       "weights": {
         "crossplane": 3,
-        "terraform": 1,
-        "opentofu": 1,
-        "pulumi": 1,
+        "terraform": 0,
+        "opentofu": 0,
+        "pulumi": 0,
         "aws-cdk": 0,
         "aws-cloudformation": 0,
         "formae": 0,
@@ -156,8 +197,8 @@
         "ansible": 1,
         "puppet": 1,
         "chef": 1,
-        "aws-cdk": 0,
-        "aws-cloudformation": 0,
+        "aws-cdk": -2,
+        "aws-cloudformation": -3,
         "formae": 0
       },
       "message": "Targets multiple cloud providers."
@@ -179,6 +220,24 @@
         "chef": 0
       },
       "message": "Prefers tools that manage state for you."
+    },
+    {
+      "id": "w-managed-state-no",
+      "questionId": "managed_state",
+      "match": { "equals": "no" },
+      "weights": {
+        "aws-cdk": 0,
+        "pulumi": 0,
+        "terraform": 1,
+        "opentofu": 1,
+        "aws-cloudformation": 0,
+        "formae": 0,
+        "ansible": 0,
+        "puppet": 0,
+        "chef": 0,
+        "crossplane": 0
+      },
+      "message": "Self-managed state is acceptable; no SaaS preference."
     },
     {
       "id": "w-managed-state",

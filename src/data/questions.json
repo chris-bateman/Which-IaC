@@ -1,8 +1,8 @@
 [
   {
     "id": "cloudformation_required",
-    "prompt": "Do you require AWS CloudFormation as the deployment engine?",
-    "helpText": "If CloudFormation is mandatory, only tools that deploy through CloudFormation should be considered.",
+    "prompt": "Must the deployment engine be CloudFormation (not just compatible)?",
+    "helpText": "Choosing “Yes” excludes tools that do not deploy through CloudFormation directly.",
     "type": "single",
     "options": [
       { "value": "yes", "label": "Yes, CloudFormation is required" },
@@ -13,10 +13,10 @@
   {
     "id": "language_preference",
     "prompt": "How do you want to define infrastructure or automation?",
-    "helpText": "Declarative includes templates (YAML/JSON), HCL, or Kubernetes-style manifests. General-purpose means writing code in languages like TypeScript or Python.",
+    "helpText": "Declarative includes templates (YAML/JSON), HCL, or Kubernetes-style manifests. Code-first means authoring infrastructure in a general-purpose language (Python/TypeScript/etc.). Choosing code-first required excludes DSL-based tools like Terraform/OpenTofu (HCL).",
     "type": "single",
     "options": [
-      { "value": "general_purpose", "label": "General-purpose programming languages" },
+      { "value": "general_purpose", "label": "Code-first required (Python/TypeScript)" },
       { "value": "declarative", "label": "Declarative configuration" },
       { "value": "no_preference", "label": "No preference" }
     ]
@@ -34,6 +34,17 @@
     ]
   },
   {
+    "id": "control_plane_opt_in",
+    "prompt": "Are you building or operating a platform control plane?",
+    "helpText": "This refers to managing infrastructure through continuously reconciled APIs (often Kubernetes-based), rather than running one-off apply operations.",
+    "type": "single",
+    "options": [
+      { "value": "yes", "label": "Yes, we’re building/operating a control plane" },
+      { "value": "no", "label": "No, we want direct provisioning tools" },
+      { "value": "unsure", "label": "Not sure" }
+    ]
+  },
+  {
     "id": "target_scope",
     "prompt": "Which target scope best matches your needs?",
     "helpText": "AWS-native favors tools built around AWS services. AWS-only means AWS today, but portability may still matter. Multi-cloud targets multiple providers.",
@@ -47,11 +58,11 @@
   },
   {
     "id": "state_backend_responsibility",
-    "prompt": "Who should be responsible for managing infrastructure state?",
-    "helpText": "Some tools require you to run and maintain a state backend yourself. Others manage state internally as part of the deployment engine.",
+    "prompt": "Do you want to operate infrastructure state yourself?",
+    "helpText": "Some tools require you to run and maintain a state backend yourself. Managed state services count as tool-managed. Example: self-managed includes S3 + DynamoDB locking (Terraform/OpenTofu). Tool-managed includes CloudFormation stacks or managed backends like Terraform Cloud.",
     "type": "single",
     "options": [
-      { "value": "tool_managed", "label": "The tool should manage state for me" },
+      { "value": "tool_managed", "label": "I don’t want to operate state infrastructure" },
       { "value": "self_managed", "label": "I’m fine managing a state backend myself" },
       { "value": "unsure", "label": "Not sure" }
     ]
