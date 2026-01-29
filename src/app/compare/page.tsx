@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import tools from '../../data/tools.json';
+import { tools } from '../../data';
 
 type SortKey =
   | 'name'

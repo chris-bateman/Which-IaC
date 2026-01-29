@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import tools from '../data/tools.json';
-import questions from '../data/questions.json';
-import rules from '../data/rules.json';
+import { tools, questions, rules } from '../data';
 
 export default function HomePage() {
   return (

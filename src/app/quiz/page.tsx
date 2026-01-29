@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import questions from '../../data/questions.json';
+import { questions } from '../../data';
 
 const ANSWER_KEY = 'whichiac:answers';
 

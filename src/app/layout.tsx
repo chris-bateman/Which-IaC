@@ -1,8 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import AnalyticsConsent from './components/AnalyticsConsent';
-import ThemeToggle from './components/ThemeToggle';
+import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
+import { ClientAnalyticsConsent, ClientThemeToggle } from './components/ClientIslands';
 
 export const metadata: Metadata = {
   title: 'Which IaC (beta)',
@@ -29,6 +29,20 @@ const themeScript = `
 })();
 `.trim();
 
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  display: 'swap',
+  variable: '--font-sans'
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  display: 'swap',
+  variable: '--font-mono'
+});
+
 export default function RootLayout({
   children
 }: {
@@ -36,7 +50,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning data-theme="light" style={{ colorScheme: 'light' }}>
-      <body suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
+      >
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
@@ -61,7 +78,7 @@ export default function RootLayout({
                   GitHub
                 </a>
               </nav>
-              <ThemeToggle />
+              <ClientThemeToggle />
             </div>
           </header>
           <main className="content">{children}</main>
@@ -84,7 +101,7 @@ export default function RootLayout({
                 </svg>
                 <span className="sr-only">LinkedIn: Chris Bateman</span>
               </a>
-              <AnalyticsConsent />
+              <ClientAnalyticsConsent />
             </div>
           </footer>
         </div>

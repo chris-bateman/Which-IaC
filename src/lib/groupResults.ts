@@ -1,4 +1,4 @@
-import tools from '../data/tools.json';
+import { getToolById } from '../data';
 import type { AnswerMap, RecommendationResult } from './recommend';
 
 export type GroupedItem = RecommendationResult['ranked'][number] & {
@@ -34,7 +34,7 @@ export const groupResults = (
   const enriched: GroupedItem[] = result.ranked.map((item) => {
     const fitSignals = item.firedRules.filter((rule) => rule.weight > 0);
     const conflicts = item.firedRules.filter((rule) => rule.weight < 0);
-    const tool = tools.find((entry) => entry.id === item.toolId);
+    const tool = getToolById(item.toolId);
     const focusCategory = tool ? getFocusCategory(tool.focus) : 'unknown';
     const focusMismatch =
       answers.automation_focus === 'infra_provisioning'

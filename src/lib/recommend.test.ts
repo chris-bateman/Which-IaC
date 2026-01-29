@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { recommend } from './recommend';
-import tools from '../data/tools.json';
-import rules from '../data/rules.json';
+import { tools, rules } from '../data';
 
 const baseAnswers = {
   cloudformation_required: 'no',

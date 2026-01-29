@@ -2,15 +2,11 @@
 
 import { useMemo, useSyncExternalStore } from 'react';
 import Link from 'next/link';
-import tools from '../../data/tools.json';
+import { getToolById, tools, questions } from '../../data';
 import { normalizeAnswers } from '../../lib/answers';
 import { recommend, type AnswerMap } from '../../lib/recommend';
 import { groupResults } from '../../lib/groupResults';
-import questions from '../../data/questions.json';
-
 const ANSWER_KEY = 'whichiac:answers';
-
-const getTool = (toolId: string) => tools.find((tool) => tool.id === toolId);
 
 const buildNoStrongMatchReasons = (
   answers: AnswerMap,
@@ -40,7 +36,7 @@ const buildNoStrongMatchReasons = (
       answers.automation_focus === 'control_plane')
   ) {
     const remainingFocuses = remainingItems
-      .map((item) => getTool(item.toolId)?.focus ?? '')
+      .map((item) => getToolById(item.toolId)?.focus ?? '')
       .map((focus) => focus.toLowerCase());
     const allInfra = remainingFocuses.every((focus) =>
       focus.includes('infrastructure provisioning')
@@ -291,7 +287,7 @@ export default function ResultPage() {
                 <div>References</div>
               </div>
               {group.items.map((item) => {
-                const tool = getTool(item.toolId);
+                const tool = getToolById(item.toolId);
                 const reasonText =
                   item.fitSignals.length > 0
                     ? item.fitSignals.map((rule) => rule.message).join(' ')
@@ -394,7 +390,7 @@ export default function ResultPage() {
         ) : (
           <div className="excluded-grid">
             {result.excluded.map((item) => {
-              const tool = getTool(item.toolId);
+              const tool = getToolById(item.toolId);
               const primaryDoc = tool?.officialDocs?.[0];
               return (
                 <article key={item.toolId} className="excluded-card">

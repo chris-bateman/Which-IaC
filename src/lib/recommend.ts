@@ -1,5 +1,4 @@
-import tools from '../data/tools.json';
-import rules from '../data/rules.json';
+import { getToolName, tools, rules } from '../data';
 
 export type AnswerMap = Record<string, string>;
 
@@ -80,16 +79,16 @@ export const recommend = (answers: AnswerMap): RecommendationResult => {
 
   ranked.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
-    const aName = tools.find((tool) => tool.id === a.toolId)?.name ?? a.toolId;
-    const bName = tools.find((tool) => tool.id === b.toolId)?.name ?? b.toolId;
+    const aName = getToolName(a.toolId);
+    const bName = getToolName(b.toolId);
     return aName.localeCompare(bName);
   });
 
   const excluded: ExcludedTool[] = Array.from(excludedReasons.entries())
     .map(([toolId, reasons]) => ({ toolId, reasons: Array.from(reasons) }))
     .sort((a, b) => {
-      const aName = tools.find((tool) => tool.id === a.toolId)?.name ?? a.toolId;
-      const bName = tools.find((tool) => tool.id === b.toolId)?.name ?? b.toolId;
+      const aName = getToolName(a.toolId);
+      const bName = getToolName(b.toolId);
       return aName.localeCompare(bName);
     });
 

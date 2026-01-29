@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import tools from '../../../data/tools.json';
+import { getToolById, tools } from '../../../data';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -14,7 +14,7 @@ export default async function ToolPage({
   params: Promise<{ tool: string }>;
 }) {
   const { tool: toolId } = await params;
-  const tool = tools.find((item) => item.id === toolId);
+  const tool = getToolById(toolId);
   if (!tool) return notFound();
 
   return (
