@@ -12,6 +12,49 @@ const ANSWER_KEY = 'whichiac:answers';
 
 const getTool = (toolId: string) => tools.find((tool) => tool.id === toolId);
 
+const buildNoStrongMatchReasons = (
+  answers: AnswerMap,
+  groupedResults: ReturnType<typeof groupResults>
+) => {
+  if (!groupedResults) return [];
+  const reasons: string[] = [];
+
+  const wantsControlPlane =
+    answers.automation_focus === 'control_plane' || answers.control_plane_opt_in === 'yes';
+  if (wantsControlPlane && answers.language_preference === 'general_purpose') {
+    reasons.push(
+      'No strong match: control-plane frameworks are declarative (Kubernetes APIs), not code-first.'
+    );
+  }
+
+  if (answers.control_plane_opt_in === 'no') {
+    reasons.push('No strong match: your answers exclude control-plane tools (e.g., Crossplane).');
+  }
+
+  const remainingItems = groupedResults
+    .filter((group) => group.id !== 'strong-fit')
+    .flatMap((group) => group.items);
+  if (
+    remainingItems.length > 0 &&
+    (answers.automation_focus === 'config_management' ||
+      answers.automation_focus === 'control_plane')
+  ) {
+    const remainingFocuses = remainingItems
+      .map((item) => getTool(item.toolId)?.focus ?? '')
+      .map((focus) => focus.toLowerCase());
+    const allInfra = remainingFocuses.every((focus) =>
+      focus.includes('infrastructure provisioning')
+    );
+    if (allInfra) {
+      reasons.push(
+        'Closest options are a different layer (infra provisioning vs control plane/config mgmt).'
+      );
+    }
+  }
+
+  return reasons.slice(0, 2);
+};
+
 const collectAlignment = (answers: AnswerMap, tool: (typeof tools)[number]) => {
   const alignments: string[] = [];
   const mismatches: string[] = [];
@@ -219,7 +262,24 @@ export default function ResultPage() {
               <span className="score"> · {group.items.length} tools</span>
             </h2>
             {group.items.length === 0 ? (
-              <p className="fit-meta">{group.emptyMessage}</p>
+              <>
+                <p className="fit-meta">{group.emptyMessage}</p>
+                {group.id === 'strong-fit' ? (
+                  (() => {
+                    const reasons = buildNoStrongMatchReasons(answers, groupedResults);
+                    return reasons.length > 0 ? (
+                      <>
+                        <div className="fit-meta">Why no strong match?</div>
+                        <ul className="fit-meta">
+                          {reasons.map((reason) => (
+                            <li key={reason}>{reason}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null;
+                  })()
+                ) : null}
+              </>
             ) : null}
             {group.items.length > 0 ? (
               <div className="fit-grid">
