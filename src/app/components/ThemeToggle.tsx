@@ -1,15 +1,9 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
-import type { ThemeChoice } from '../../lib/theme';
 import { getThemeSnapshot, setThemeSnapshot, subscribeTheme } from '../../lib/themeStore';
 
 const storageKey = 'theme';
-
-const applyTheme = (theme: ThemeChoice) => {
-  document.documentElement.dataset.theme = theme;
-  document.documentElement.style.colorScheme = theme;
-};
 
 export default function ThemeToggle() {
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => 'light');

@@ -132,6 +132,19 @@ a:focus-visible {
   flex-wrap: wrap;
 }
 
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+}
+
+.footer-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
 .hero {
   display: flex;
   flex-direction: column;

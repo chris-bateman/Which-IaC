@@ -11,9 +11,21 @@ const ANSWER_KEY = 'whichiac:answers';
 
 const getTool = (toolId: string) => tools.find((tool) => tool.id === toolId);
 
+const subscribeAnswers = (listener: () => void) => {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === ANSWER_KEY) {
+      listener();
+    }
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    window.removeEventListener('storage', onStorage);
+  };
+};
+
 export default function ResultPage() {
   const stored = useSyncExternalStore(
-    () => () => {},
+    subscribeAnswers,
     () => localStorage.getItem(ANSWER_KEY),
     () => null
   );

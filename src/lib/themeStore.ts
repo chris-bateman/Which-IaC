@@ -1,12 +1,20 @@
-import type { ThemeChoice } from './theme';
+import { resolveThemeChoice, type ThemeChoice } from './theme';
 
 type Listener = () => void;
 
 const listeners = new Set<Listener>();
+const storageKey = 'theme';
 
 export function getThemeSnapshot(): ThemeChoice {
-  if (typeof document === 'undefined') return 'light';
-  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+  if (typeof window === 'undefined') return 'light';
+  const stored = window.localStorage.getItem(storageKey);
+  const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+  const resolved = resolveThemeChoice(stored, prefersDark);
+  if (document.documentElement.dataset.theme !== resolved) {
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.style.colorScheme = resolved;
+  }
+  return resolved;
 }
 
 export function subscribeTheme(listener: Listener) {

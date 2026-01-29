@@ -122,9 +122,9 @@ npx playwright show-report
 ## Static export (local preview)
 ```
 npm run build
-npx serve out
+PORT=3000 node scripts/serve-static.mjs
 ```
-Open the URL printed by `serve`.
+Open the URL printed by the static server.
 
 ## GitHub Pages deployment
 - Production deploys are expected at `https://whichiac.com/` (root domain, no base path).

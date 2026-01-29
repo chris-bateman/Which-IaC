@@ -67,8 +67,22 @@ export default function RootLayout({
           <main className="content">{children}</main>
           <footer className="site-footer">
             <div className="footer-content">
-              <a href="https://github.com/chris-bateman/Which-IaC" target="_blank" rel="noreferrer">
-                View source and scoring rules
+              <a
+                className="footer-link"
+                href="https://www.linkedin.com/in/chris-bateman1/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile for Chris Bateman"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  focusable="false"
+                  role="img"
+                >
+                  <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 23.5h4V8.5h-4v15ZM8.5 8.5h3.8v2.04h.05c.53-1 1.84-2.04 3.78-2.04 4.04 0 4.78 2.66 4.78 6.12v8.88h-4v-7.88c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.04-3.02 4.16v8.02h-4v-15Z" />
+                </svg>
+                <span className="sr-only">LinkedIn: Chris Bateman</span>
               </a>
               <AnalyticsConsent />
             </div>

@@ -2,7 +2,6 @@
 
 import { useSyncExternalStore } from 'react';
 import Script from 'next/script';
-import type { ConsentState } from '../../lib/consent';
 import {
   clearConsentSnapshot,
   getConsentSnapshot,
