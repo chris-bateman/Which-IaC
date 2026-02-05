@@ -10,7 +10,7 @@ export default defineConfig({
   use: {
     baseURL,
     trace: 'retain-on-failure',
-    screenshot: 'only-on-failure'
+    screenshot: 'on'
   },
   webServer: {
     command: 'npm run build && PORT=4173 node scripts/serve-static.mjs',
