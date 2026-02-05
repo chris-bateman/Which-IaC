@@ -9,7 +9,8 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL,
-    trace: 'retain-on-failure'
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure'
   },
   webServer: {
     command: 'npm run build && PORT=4173 node scripts/serve-static.mjs',
